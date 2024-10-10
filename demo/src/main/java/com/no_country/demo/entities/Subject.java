@@ -1,5 +1,6 @@
 package com.no_country.demo.entities;
 
+import com.no_country.demo.entities.enums.DiaSemana;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,10 +14,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Alumno extends Usuario {
-    private Boolean estadoAlumno;
-    private Curso cursoActual;
-    private List<Evaluacion> evaluaciones;
-    private Date fechaInscripcionCurso;
-    private Tutor tutor;
+public class Subject {
+    private String subject;
+    private Teacher teacher;
+    private String topics;
+    private String description;
+    private List<Evaluacion> evaluations;
+    private Date schedule;
+    private List<DiaSemana> days;
 }

@@ -1,7 +1,7 @@
 package com.no_country.demo.entities;
 
-import com.no_country.demo.entities.enums.Nota;
-import com.no_country.demo.entities.enums.TipoEvaluacion;
+import com.no_country.demo.entities.enums.Qualification;
+import com.no_country.demo.entities.enums.TypeEvaluation;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,11 +15,11 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 public class Evaluacion {
-    private Alumno alumno;
-    private TipoEvaluacion tipo;
-    private Asignatura asignatura;
-    private Date fechaEvaluacion;
-    private String temasEvaluacion;
-    private Nota calificacion;
-    private String comentario;
+    private Student student;
+    private TypeEvaluation typeEvaluation;
+    private Subject subject;
+    private Date dateEvaluation;
+    private String topicsEvaluation;
+    private Qualification qualification;
+    private String comment;
 }

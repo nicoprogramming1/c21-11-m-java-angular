@@ -11,7 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Domicilio {
-    private String domicilio;
-
+public class File {
+    private int file;
 }

@@ -6,15 +6,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Curso {
-    private String curso;
-    private List<Asignatura> asignaturas;
-    private String detalle;
-    private List<Alumno> alumnos;
+public class Student extends UserEntity {
+    private Boolean statusStudent;
+    private Course currentCourse;
+    private List<Evaluacion> evaluations;
+    private Date dateRegistrationCourse;
+    private Tutor tutor;
 }
