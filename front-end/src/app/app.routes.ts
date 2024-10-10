@@ -9,11 +9,11 @@ export const routes: Routes = [
       ),
     children: [
       {
-        path: 'post',
-        title: 'Registrar usuario',
+        path: 'user',
+        title: 'Consultar usuario',
         loadComponent: () =>
-          import('./dashboard/views/users/post/post.component').then(
-            (m) => m.PostComponent
+          import('./dashboard/views/usuarios/usuario/usuario.component').then(
+            (m) => m.UsuarioComponent
           ),
       },
       {
