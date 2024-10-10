@@ -1,6 +1,6 @@
 package com.no_country.demo.entities;
 
-import com.no_country.demo.entities.enums.DiaSemana;
+import com.no_country.demo.entities.enums.DayWeek;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,5 +21,5 @@ public class Subject {
     private String description;
     private List<Evaluacion> evaluations;
     private Date schedule;
-    private List<DiaSemana> days;
+    private List<DayWeek> days;
 }
