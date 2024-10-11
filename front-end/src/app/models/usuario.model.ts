@@ -1,7 +1,7 @@
-import { Dni } from '../interfaces/dni.interface';
-import { Domicilio } from '../interfaces/domicilio.interface';
-import { Email } from '../interfaces/email.interface';
-import { Telefono } from '../interfaces/telefono.model';
+import { Dni } from '../interfaces/usuario/dni.interface';
+import { Domicilio } from '../interfaces/usuario/domicilio.interface';
+import { Email } from '../interfaces/usuario/email.interface';
+import { Telefono } from '../interfaces/usuario/telefono.model';
 import { EstadoUsuario } from './estadoUsuario.enum';
 import { Rol } from './rol.enum';
 

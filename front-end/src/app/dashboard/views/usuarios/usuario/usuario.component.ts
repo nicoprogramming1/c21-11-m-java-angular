@@ -9,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class UsuarioComponent {
 
+  // Este componente representa la view con la info del usuario cuando es consultada por el admin
+
+
 }
