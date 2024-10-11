@@ -7,3 +7,5 @@ export interface Alumno extends Usuario {
     cursoAcutal: string // cuando creemos Curso este sera de tipo Curso
     calificaciones: Calificaciones[]
 }
+
+
