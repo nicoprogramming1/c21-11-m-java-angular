@@ -1,7 +1,7 @@
-import { Usuario } from "./usuario.interface";
+import { User } from "./user.interface";
 
-export interface UsuarioResponse {  // cualquier tipo de usuario individual (get)
+export interface UserResponse {  // cualquier tipo de usuario individual (get)
     success: boolean,
     message: string,
-    data: Usuario
+    data: User
 }

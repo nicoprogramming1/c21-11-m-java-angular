@@ -1,16 +1,14 @@
-import { Dni, Domicilio, Email, Telefono } from "../../interfaces/usuario.interface";
-import { EstadoUsuario } from "./estadoUsuario.enum";
-import { Rol } from "./rol.enum";
+import { Dni, Domicilio, Email, EstadoUsuario, Rol, Telefono } from "../../interfaces/user.interface";
 
 
-export class Usuario {
+export class User {
   public nombre: string;
   public apellido: string;
   public dni: Dni;
   public domicilio: Domicilio;
   public email: Email;
   public fechaNacimiento: Date;
-  public fotoPerfil: string;
+  public fotoPerfil?: string;
   public telefono: Telefono;
   public rol: Rol;
   public estadoUsuario: EstadoUsuario;
@@ -38,4 +36,5 @@ export class Usuario {
     this.rol = rol;
     this.estadoUsuario = estadoUsuario;
   }
+
 }
