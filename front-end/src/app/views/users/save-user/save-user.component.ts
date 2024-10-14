@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { User } from '../../../interfaces/user.interface';
+import { Role, User } from '../../../interfaces/user.interface';
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';  // importado a mano
 
 @Component({
   selector: 'app-save-user',
@@ -12,29 +13,32 @@ import { CommonModule } from '@angular/common';
   styleUrl: './save-user.component.css'
 })
 export class SaveUserComponent {
+  roles = Object.values(Role); // Obtener los valores del enum de roles
+  title: string = 'Registrar nuevo usuario';
   private userService = inject(UserService);
-  registerForm!: FormGroup;
+  private fb = inject(FormBuilder)
 
-  constructor(private fb: FormBuilder) {}
+  registerForm!: FormGroup;
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      birthday: ['', Validators.required],
-      dni: ['', [Validators.required, Validators.minLength(10)]],
-      role: ['', Validators.required],
-      legajo: ['', [Validators.required, Validators.minLength(10)]]
+      email: [''],
+      firstName: [''],
+      lastName: [''],
+      birthDay: [''],
+      dni: [''],
+      role: [''],
+      legajo: ['']
     });
-  }
+}
+
 
   onSubmit(): void {
     if (this.registerForm.valid) {
       const user: User = {
-        dni: this.registerForm.value.dni,
+        dni: {dni: Number(this.registerForm.value.dni)},
         email: this.registerForm.value.email,
-        role: this.registerForm.value.rol,
+        role: this.registerForm.value.role,
         legajo: this.registerForm.value.legajo,
         lastName: this.registerForm.value.lastName,
         firstName: this.registerForm.value.firstName,
