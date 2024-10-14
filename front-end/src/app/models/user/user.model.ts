@@ -1,29 +1,29 @@
-import { Dni, Domicilio, Email, EstadoUsuario, Rol, Telefono } from "../../interfaces/user.interface";
+import { Dni, Address, Email, UserState, Role, Phone } from "../../interfaces/user.interface";
 
 
 export class User {
   public nombre: string;
   public apellido: string;
   public dni: Dni;
-  public domicilio: Domicilio;
+  public domicilio: Address;
   public email: Email;
   public fechaNacimiento: Date;
   public fotoPerfil?: string;
-  public telefono: Telefono;
-  public rol: Rol;
-  public estadoUsuario: EstadoUsuario;
+  public telefono: Phone;
+  public rol: Role;
+  public estadoUsuario: UserState;
 
   constructor(
     nombre: string,
     apellido: string,
     dni: Dni,
-    domicilio: Domicilio,
+    domicilio: Address,
     email: Email,
     fechaNacimiento: Date,
     fotoPerfil: string,
-    telefono: Telefono,
-    rol: Rol,
-    estadoUsuario: EstadoUsuario
+    telefono: Phone,
+    rol: Role,
+    estadoUsuario: UserState
   ) {
     this.nombre = nombre;
     this.apellido = apellido;
