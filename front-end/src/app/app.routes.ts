@@ -2,6 +2,10 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
+
+
+
+      
         path: 'dashboard',
         loadComponent: () =>
           import('./views/dashboard/dashboard.component').then(
@@ -43,5 +47,14 @@ export const routes: Routes = [
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',
+      },
+
+      {
+        path: 'post',
+        title: 'Post user interface',
+        loadComponent: () =>
+          import('./views/users/save-user/save-user.component').then(
+            (m) => m.SaveUserComponent
+          ),
       },
 ];

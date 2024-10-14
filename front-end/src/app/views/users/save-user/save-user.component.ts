@@ -3,6 +3,7 @@ import { UserService } from '../../../services/user.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { User } from '../../../interfaces/user.interface';
 import { CommonModule } from '@angular/common';
+import { log } from 'console';
 
 @Component({
   selector: 'app-save-user',
@@ -31,7 +32,9 @@ export class SaveUserComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.registerForm.valid) {
+    console.log("pasan cosas")
+    if (true) {
+      console.log("Valido")
       const user: User = {
         dni: this.registerForm.value.dni,
         email: this.registerForm.value.email,
@@ -63,6 +66,7 @@ export class SaveUserComponent implements OnInit {
   }
 
   saveToLocalStorage(user: User): void {
+    console.log("Funciona");
     let users: User[] = [];
     const storedUsers = localStorage.getItem('users');
     if (storedUsers) {
