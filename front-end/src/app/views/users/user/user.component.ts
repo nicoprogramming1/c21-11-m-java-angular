@@ -10,7 +10,7 @@ import { switchMap } from 'rxjs';
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
-export class UserComponent {
+export class UserComponent {  // CONSULTAR UN USUARIO
   private userService = inject(UserService)
   private route = inject(ActivatedRoute)
   

@@ -16,7 +16,7 @@ export class DeleteComponent {
 
   @Output() eliminar = new EventEmitter<void>(); 
 
-  private userService = inject(UserService)
+  private userService = inject(UserService) // Esta forma es mas actual y es buena práctica
 
   abrirConfirmacion() {
     this.mostrarModal = true;
