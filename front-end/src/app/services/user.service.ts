@@ -13,7 +13,7 @@ export class UserService {
   private http = inject(HttpClient);
 
   saveUser(user: User): Observable<User | null> {
-    return this.http.post<any>(`${this.apiUrl}/user`, user).pipe(
+    return this.http.post<UserResponse>(`${this.apiUrl}/user`, user).pipe(
       map((res) => {
         if (res.success) {
           return res.data;
@@ -42,7 +42,7 @@ export class UserService {
     );
   }
 
-  deleteUser(id: string): Observable<null> {
+  deleteUser(id: number): Observable<null> {
     return this.http.delete<UserResponse>(`${this.apiUrl}/user:${id}`).pipe(
       map((res) => {
         if (res.success) {

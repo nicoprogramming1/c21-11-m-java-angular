@@ -10,7 +10,7 @@ import { UserService } from '../../../services/user.service';
   styleUrl: './delete.component.css'
 })
 export class DeleteComponent {
-  @Input() id!: string;
+  @Input() id!: number;
   buttonText: string = 'Eliminar';
   mostrarModal: boolean = false;
 
