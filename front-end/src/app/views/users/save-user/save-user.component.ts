@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user.service';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { User } from '../../../interfaces/user.interface';
 import { CommonModule } from '@angular/common';
 
@@ -11,9 +11,10 @@ import { CommonModule } from '@angular/common';
   templateUrl: './save-user.component.html',
   styleUrl: './save-user.component.css'
 })
-export class SaveUserComponent {
+export class SaveUserComponent implements OnInit {
   private userService = inject(UserService);
   registerForm!: FormGroup;
+  message: string = '';
 
   constructor(private fb: FormBuilder) {}
 
@@ -34,25 +35,45 @@ export class SaveUserComponent {
       const user: User = {
         dni: this.registerForm.value.dni,
         email: this.registerForm.value.email,
-        role: this.registerForm.value.rol,
+        role: this.registerForm.value.role,
         legajo: this.registerForm.value.legajo,
         lastName: this.registerForm.value.lastName,
         firstName: this.registerForm.value.firstName,
-        birthDay: this.registerForm.value.birthDay,
-      }
-
+        birthDay: this.registerForm.value.birthday,
+      };
+      
+      // Save to localStorage
+      this.saveToLocalStorage(user);
+      
+      // Save to service
       this.userService.saveUser(user).subscribe(
         response => {
           console.log('User registered successfully', response);
+          this.message = 'Usuario registrado con éxito';
+          this.resetForm();
         },
         error => {
           console.error('Error registering user', error);
+          this.message = 'Error al registrar usuario';
         }
       );
+    } else {
+      this.message = 'Por favor, complete todos los campos correctamente';
     }
+  }
+
+  saveToLocalStorage(user: User): void {
+    let users: User[] = [];
+    const storedUsers = localStorage.getItem('users');
+    if (storedUsers) {
+      users = JSON.parse(storedUsers);
+    }
+    users.push(user);
+    localStorage.setItem('users', JSON.stringify(users));
   }
 
   resetForm(): void {
     this.registerForm.reset();
+    this.message = '';
   }
 }
