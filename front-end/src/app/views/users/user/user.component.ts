@@ -3,6 +3,7 @@ import { UserService } from '../../../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -14,9 +15,9 @@ export class UserComponent {  // CONSULTAR UN USUARIO
   private userService = inject(UserService)
   private route = inject(ActivatedRoute)
   
-  public product = this.stateService.product
-  public loading = this.stateService.loading
-  public error = this.stateService.error
+  // public product = this.stateService.product
+  // public loading = this.stateService.loading
+  // public error = this.stateService.error
   
   ngOnInit() {
     setTimeout(() => {

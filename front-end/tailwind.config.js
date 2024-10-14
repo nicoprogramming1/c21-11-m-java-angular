@@ -16,6 +16,8 @@ module.exports = {
         "custom-pink": "#FF9EB1",
         "custom-green": "#36D39A",
         "custom-gray": "#C8CDCB",
+        "custom-SlateGray":"#827F98"
+
       },
     },
     animation: {
@@ -341,6 +343,11 @@ module.exports = {
         '"Liberation Mono"',
         '"Courier New"',
         "monospace",
+      ],
+
+
+      Inter :[
+        "Inter"
       ],
     },
     fontSize: {
