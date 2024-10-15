@@ -1,1 +1,59 @@
-<p>user works!</p>
+<div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-6">Detalles del Usuario</h1>
+    
+    <div class="mb-4">
+        <label class="block text-2xl font-normal leading-7 text-left">Correo electrónico:</label>
+        <p class="mt-1 text-gray-900">{{ user?.correo }}</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="mb-4">
+            <label class="block text-2xl font-normal leading-7 text-left">Nombre/s:</label>
+            <p class="mt-1 text-gray-900">{{ user?.firstname }}</p>
+        </div>
+        <div class="mb-4">
+            <label class="block text-2xl font-normal leading-7 text-left">Apellido/s:</label>
+            <p class="mt-1 text-gray-900">{{ user?.lastname }}</p>
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-2xl font-normal leading-7 text-left">Fecha de nacimiento:</label>
+        <p class="mt-1 text-gray-900">{{ user?.birth }}</p>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-2xl font-normal leading-7 text-left">DNI:</label>
+        <p class="mt-1 text-gray-900">{{ user?.dni }}</p>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-2xl font-normal leading-7 text-left">Rol:</label>
+        <p class="mt-1 text-gray-900">{{ user?.rol }}</p>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-2xl font-normal leading-7 text-left">Legajo:</label>
+        <p class="mt-1 text-gray-900">{{ user?.legajo }}</p>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-2xl font-normal leading-7 text-left">Domicilio:</label>
+        <p class="mt-1 text-gray-900">{{ user?.domicilio }}</p>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-2xl font-normal leading-7 text-left">Localidad:</label>
+        <p class="mt-1 text-gray-900">{{ user?.localidad }}</p>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-2xl font-normal leading-7 text-left">Teléfono:</label>
+        <p class="mt-1 text-gray-900">{{ user?.telefono }}</p>
+    </div>
+</div>
+
+<div class="flex justify-start space-x-4 mt-4">
+    <app-delete *ngIf="user?.id" [id]="getUserId()" (eliminar)="onUserDeleted()"></app-delete>
+    <button class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700" (click)="onRandomButtonClick()">Botón Aleatorio</button>
+</div>
