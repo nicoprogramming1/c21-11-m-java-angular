@@ -11,14 +11,14 @@ import { DeleteComponent } from '../delete/delete.component';
   standalone: true,
   imports: [DeleteComponent, CommonModule, ReactiveFormsModule],
   templateUrl: './user.component.html',
-  styleUrl: './user.component.css',
+  styleUrls: ['./user.component.css'],  // CORREGIDO styleUrls
 })
 export class UserComponent implements OnInit {
   @Output() userUpdated = new EventEmitter<{ userId: number; updatedUserData: any }>();
 
   userForm: FormGroup; 
-  user!: UserMock | null;//Parte del mock, cuando tengamos el back el tipo de dato que recibe debe cambiar
-  isEditable: boolean = false; // Para el estado del botón modificar, que cambia al botón guardar
+  user!: UserMock | null;  // Parte del mock, cuando tengamos el back el tipo de dato que recibe debe cambiar
+  isEditable: boolean = false;  // Para el estado del botón modificar, que cambia al botón guardar
   showModal: boolean = false;
 
   // Inyección de servicios
@@ -27,6 +27,7 @@ export class UserComponent implements OnInit {
   private fb = inject(FormBuilder); 
 
   constructor() {
+    // Inicializar el formulario reactivo con campos deshabilitados
     this.userForm = this.fb.group({
       correo: [{ value: '', disabled: true }, [Validators.required, Validators.email]],
       firstname: [{ value: '', disabled: true }, Validators.required],
@@ -42,12 +43,18 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const userId = '14'; //ESTO ESTA MOCK, PARA QUE RECIBA EL ID DEL PADRE HAY Q PONER UN INPUT:  @Input() userId!: string;
-    //Y borrar la constante.
-    this.userService.getUserById(userId).subscribe((data) => {
-      this.user = data;
-      if (this.user) {
-        this.userForm.patchValue(this.user); 
+    // Suscribirnos a los parámetros de la URL para obtener el ID del usuario
+    this.route.paramMap.subscribe(params => {
+      const userId = params.get('id');
+      if (userId) {
+        this.userService.getUserById(userId).subscribe((data) => {
+          this.user = data;
+          if (this.user) {
+            this.userForm.patchValue(this.user);  // Parchar el formulario con los datos del usuario
+          }
+        });
+      } else {
+        console.error('No se ha proporcionado un ID de usuario válido.');
       }
     });
   }
@@ -97,16 +104,15 @@ export class UserComponent implements OnInit {
 
   onUserDeleted() {
     console.log("Usuario eliminado, realizar acciones necesarias aquí.");
-   
   }
 
   toggleEditMode() {
     this.isEditable = !this.isEditable; 
 
     if (this.isEditable) {
-      this.userForm.enable();  
+      this.userForm.enable();  // Habilitar el formulario cuando esté en modo edición
     } else {
-      this.userForm.disable(); 
+      this.userForm.disable(); // Deshabilitar el formulario cuando no esté en modo edición
     }
   }
 
@@ -116,19 +122,17 @@ export class UserComponent implements OnInit {
 
   cerrarModal() {
     this.showModal = false;
-    this.toggleEditMode(); 
-  
-     // Restauramos los datos q no se confirmaron(esto me lo dio chatgipiti)
-  const userId = this.getUserId();
-  if (userId !== null) {
-    this.userService.getUserById(userId.toString()).subscribe((data) => {
-      this.user = data;
-      if (this.user) {
-        this.userForm.patchValue(this.user);
-      }
-    });
-  }
+    this.toggleEditMode();  // Salir del modo de edición si se cierra el modal
+
+    // Restaurar los datos no confirmados
+    const userId = this.getUserId();
+    if (userId !== null) {
+      this.userService.getUserById(userId.toString()).subscribe((data) => {
+        this.user = data;
+        if (this.user) {
+          this.userForm.patchValue(this.user);  // Restaurar el formulario con los valores originales
+        }
+      });
+    }
   }
 }
-
-
