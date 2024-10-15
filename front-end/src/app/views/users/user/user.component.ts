@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UserMock, UserService } from '../../../services/user.service';
 import { DeleteComponent } from '../delete/delete.component';
+
 
 @Component({
   selector: 'app-user',
@@ -13,9 +14,12 @@ import { DeleteComponent } from '../delete/delete.component';
   styleUrl: './user.component.css',
 })
 export class UserComponent implements OnInit {
+  @Output() userUpdated = new EventEmitter<{ userId: number; updatedUserData: any }>();
 
   userForm: FormGroup; 
-  user!: UserMock | null;
+  user!: UserMock | null;//Parte del mock, cuando tengamos el back el tipo de dato que recibe debe cambiar
+  isEditable: boolean = false; // Para el estado del botón modificar, que cambia al botón guardar
+  showModal: boolean = false;
 
   // Inyección de servicios
   private userService = inject(UserService);
@@ -24,21 +28,22 @@ export class UserComponent implements OnInit {
 
   constructor() {
     this.userForm = this.fb.group({
-      correo: [''],
-      firstname: [''],
-      lastname: [''],
-      birth: [''],
-      dni: [''],
-      rol: [''],
-      legajo: [''],
-      domicilio: [''],
-      localidad: [''],
-      telefono: [''],
+      correo: [{ value: '', disabled: true }, [Validators.required, Validators.email]],
+      firstname: [{ value: '', disabled: true }, Validators.required],
+      lastname: [{ value: '', disabled: true }, Validators.required],
+      birth: [{ value: '', disabled: true }, Validators.required],
+      dni: [{ value: '', disabled: true }, Validators.required],
+      rol: [{ value: '', disabled: true }, Validators.required],
+      legajo: [{ value: '', disabled: true }],
+      domicilio: [{ value: '', disabled: true }],
+      localidad: [{ value: '', disabled: true }],
+      telefono: [{ value: '', disabled: true }, Validators.required],
     });
   }
 
   ngOnInit(): void {
-    const userId = '5'; 
+    const userId = '14'; //ESTO ESTA MOCK, PARA QUE RECIBA EL ID DEL PADRE HAY Q PONER UN INPUT:  @Input() userId!: string;
+    //Y borrar la constante.
     this.userService.getUserById(userId).subscribe((data) => {
       this.user = data;
       if (this.user) {
@@ -51,25 +56,79 @@ export class UserComponent implements OnInit {
     return this.user ? Number(this.user.id) : null; 
   }
 
+  guardarCambios() {
+    const userId = this.getUserId();
+    const updatedUserData = this.userForm.value;
+
+    if (userId !== null) {
+      this.userUpdated.emit({ userId, updatedUserData });
+    }
+  }
+
+  confirmarModificacion() {
+    const userId = this.getUserId(); 
+    const updatedUserData = this.userForm.value; 
+
+    if (this.userForm.valid && userId != null) {
+      this.userService.updateUser(userId.toString(), updatedUserData).subscribe({
+        next: () => {
+          console.log('Usuario modificado con éxito');
+          this.cerrarModal();
+          this.toggleEditMode(); 
+        },
+        error: (error: any) => {
+          console.error('Ha ocurrido un error durante la actualización', error);
+        },
+        complete: () => {
+          console.log('Modificación completada');
+        }
+      });
+    } else {
+      console.error('Formulario inválido o no se ha proporcionado un ID de usuario', {
+        isValid: this.userForm.valid,
+        userId: userId,
+      });
+    }
+  }
+
+  onUserUpdated(event: { userId: number; updatedUserData: any }) {
+    console.log('Usuario actualizado:', event.userId, event.updatedUserData);
+  }
+
   onUserDeleted() {
     console.log("Usuario eliminado, realizar acciones necesarias aquí.");
-    
+   
   }
 
-  onRandomButtonClick() {
-    console.log("Botón aleatorio clickeado");
-    
+  toggleEditMode() {
+    this.isEditable = !this.isEditable; 
+
+    if (this.isEditable) {
+      this.userForm.enable();  
+    } else {
+      this.userForm.disable(); 
+    }
   }
 
-  /* public product = this.stateService.product;
-  public loading = this.stateService.loading;
-  public error = this.stateService.error; 
+  abrirConfirmacion() {
+    this.showModal = true;
+  }
 
-  ngOnInit() {
-    setTimeout(() => {
-      this.route.params
-        .pipe(switchMap(({ id }) => this.userService.getUserById(id)))
-        .subscribe();
-    }, 2000);
-  }*/
+  cerrarModal() {
+    this.showModal = false;
+    this.toggleEditMode(); 
+  
+     // Restauramos los datos q no se confirmaron(esto me lo dio chatgipiti)
+  const userId = this.getUserId();
+  if (userId !== null) {
+    this.userService.getUserById(userId.toString()).subscribe((data) => {
+      this.user = data;
+      if (this.user) {
+        this.userForm.patchValue(this.user);
+      }
+    });
+  }
+  }
 }
+
+

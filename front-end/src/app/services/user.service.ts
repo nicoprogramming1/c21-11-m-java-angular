@@ -57,7 +57,19 @@ export class UserService {
       })
     );
   }
+
+  updateUser(id: string, updatedUserData: UserMock): Observable<UserMock | null> {
+    return this.http.put<UserMock>(`${this.apiUrl}/${id}`, updatedUserData).pipe(
+      map((res) => res),
+      catchError((err) => {
+        console.error('Error al actualizar el usuario:', err);
+        return of(null);
+      })
+    );
+  }
 }
+
+
 
 
 
