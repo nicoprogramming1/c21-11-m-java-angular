@@ -2,39 +2,43 @@ import { Dni, Address, Email, UserState, Role, Phone } from "../../interfaces/us
 
 
 export class User {
-  public nombre: string;
-  public apellido: string;
-  public dni: Dni;
-  public domicilio: Address;
+  public firstName: string;
+  public lastName: string;
+  public DNI: Dni;
+  public address?: Address;
   public email: Email;
-  public fechaNacimiento: Date;
-  public fotoPerfil?: string;
-  public telefono: Phone;
-  public rol: Role;
-  public estadoUsuario: UserState;
+  public date: Date;
+  public photoProfile?: string;
+  public phone?: Phone;
+  public Role: Role;
+  public userState?: UserState;
+  public legojo?: string;
 
   constructor(
-    nombre: string,
-    apellido: string,
-    dni: Dni,
-    domicilio: Address,
+    firstName: string,
+    lastName: string,
+    DNI: Dni,
+    address: Address,
     email: Email,
-    fechaNacimiento: Date,
-    fotoPerfil: string,
-    telefono: Phone,
-    rol: Role,
-    estadoUsuario: UserState
+    date: Date,
+    photoProfile: string,
+    phone: Phone,
+    Role: Role,
+    userState: UserState,
+    legojo: string
   ) {
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.dni = dni;
-    this.domicilio = domicilio;
+    
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.DNI = DNI;
+    this.address = address;
     this.email = email;
-    this.fechaNacimiento = fechaNacimiento;
-    this.fotoPerfil = fotoPerfil;
-    this.telefono = telefono;
-    this.rol = rol;
-    this.estadoUsuario = estadoUsuario;
+    this.date = date;
+    this.photoProfile = photoProfile;
+    this.phone = phone;
+    this.Role = Role;
+    this.userState = userState;
+    this.legojo = legojo;
   }
 
 }

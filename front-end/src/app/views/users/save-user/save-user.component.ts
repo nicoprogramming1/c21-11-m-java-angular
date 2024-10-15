@@ -1,9 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { User } from '../../../interfaces/user.interface';
+
 import { CommonModule } from '@angular/common';
-import { log } from 'console';
+
+import { User } from '../../../models/user/user.model';
 
 @Component({
   selector: 'app-save-user',
@@ -36,13 +37,13 @@ export class SaveUserComponent implements OnInit {
     if (true) {
       console.log("Valido")
       const user: User = {
-        dni: this.registerForm.value.dni,
+        DNI: this.registerForm.value.dni,
         email: this.registerForm.value.email,
-        role: this.registerForm.value.role,
-        legajo: this.registerForm.value.legajo,
+       Role: this.registerForm.value.role,
+        legojo: this.registerForm.value.legajo,
         lastName: this.registerForm.value.lastName,
         firstName: this.registerForm.value.firstName,
-        birthDay: this.registerForm.value.birthday,
+        date: this.registerForm.value.birthday,
       };
       
       // Save to localStorage
