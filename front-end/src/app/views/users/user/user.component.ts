@@ -59,20 +59,55 @@ export class UserComponent implements OnInit {
     });
   }
 
+  getCorreo() {
+    return this.userForm.get('correo');
+  }
+
+
+  getFirstname() {
+    return this.userForm.get('firstname');
+  }
+
+  getLastname() {
+    return this.userForm.get('lastname');
+  }
+
+  getBirth() {
+    return this.userForm.get('birth');
+  }
+
+  getDni() {
+    return this.userForm.get('dni');
+  }
+
+  getRol() {
+    return this.userForm.get('rol');
+  }
+
+  getLegajo() {
+    return this.userForm.get('legajo');
+  }
+
+  getDomicilio() {
+    return this.userForm.get('domicilio');
+  }
+
+  getLocalidad() {
+    return this.userForm.get('localidad');
+  }
+
+  getTelefono() {
+    return this.userForm.get('telefono');
+  }
+
   getUserId(): number | null {
     return this.user ? Number(this.user.id) : null; 
   }
 
-  guardarCambios() {
-    const userId = this.getUserId();
-    const updatedUserData = this.userForm.value;
-
-    if (userId !== null) {
-      this.userUpdated.emit({ userId, updatedUserData });
-    }
-  }
-
   confirmarModificacion() {
+    // Marcar todos los campos del formulario como tocados para activar las validaciones
+    this.userForm.markAllAsTouched();
+
     const userId = this.getUserId(); 
     const updatedUserData = this.userForm.value; 
 
@@ -96,7 +131,8 @@ export class UserComponent implements OnInit {
         userId: userId,
       });
     }
-  }
+}
+
 
   onUserUpdated(event: { userId: number; updatedUserData: any }) {
     console.log('Usuario actualizado:', event.userId, event.updatedUserData);

@@ -19,9 +19,10 @@
                 placeholder="Ingrese su correo electrónico" 
                 [ngClass]="{
                     'shadow-gray-400': !isEditable,
-                    'shadow-custom-green': isEditable
-                  }"
-                class="border border-gray-300 w-full h-[61px] p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                    'shadow-custom-green': isEditable,
+                    'shadow-custom-pink': getCorreo()?.invalid && getCorreo()?.touched
+                }"
+                class="border border-gray-300 w-full h-[61px] p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none shadow-md"
             />
         </div>
     
@@ -34,8 +35,9 @@
                     placeholder="Ingrese su nombre" 
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
-                        'shadow-custom-green': isEditable
-                      }"
+                        'shadow-custom-green': isEditable,
+                        'shadow-custom-pink': getFirstname()?.invalid && getFirstname()?.touched
+                    }"
                     class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
@@ -48,8 +50,9 @@
                     placeholder="Ingrese su apellido" 
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
-                        'shadow-custom-green': isEditable
-                      }"
+                        'shadow-custom-green': isEditable,
+                        'shadow-custom-pink': getLastname()?.invalid && getLastname()?.touched
+                    }"
                     class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
@@ -61,8 +64,9 @@
                     formControlName="birth" 
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
-                        'shadow-custom-green': isEditable
-                      }"
+                        'shadow-custom-green': isEditable,
+                        'shadow-custom-pink': getBirth()?.invalid && getBirth()?.touched
+                    }"
                     class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
@@ -75,8 +79,9 @@
                     placeholder="Ingrese su DNI" 
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
-                        'shadow-custom-green': isEditable
-                      }"
+                        'shadow-custom-green': isEditable,
+                        'shadow-custom-pink': getDni()?.invalid && getDni()?.touched
+                    }"
                     class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
@@ -89,8 +94,9 @@
                     placeholder="Ingrese su rol" 
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
-                        'shadow-custom-green': isEditable
-                      }"
+                        'shadow-custom-green': isEditable,
+                        'shadow-custom-pink': getRol()?.invalid && getRol()?.touched
+                    }"
                     class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
@@ -103,8 +109,9 @@
                     placeholder="Ingrese su legajo" 
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
-                        'shadow-custom-green': isEditable
-                      }"
+                        'shadow-custom-green': isEditable,
+                        'shadow-custom-pink': getLegajo()?.invalid && getLegajo()?.touched
+                    }"
                     class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
@@ -117,8 +124,9 @@
                     placeholder="Ingrese su domicilio" 
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
-                        'shadow-custom-green': isEditable
-                      }"
+                        'shadow-custom-green': isEditable,
+                        'shadow-custom-pink': getDomicilio()?.invalid && getDomicilio()?.touched
+                    }"
                     class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
@@ -131,8 +139,9 @@
                     placeholder="Ingrese su localidad" 
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
-                        'shadow-custom-green': isEditable
-                      }"
+                        'shadow-custom-green': isEditable,
+                        'shadow-custom-pink': getLocalidad()?.invalid && getLocalidad()?.touched
+                    }"
                     class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
@@ -145,13 +154,15 @@
                     placeholder="Ingrese su teléfono" 
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
-                        'shadow-custom-green': isEditable
-                      }"
+                        'shadow-custom-green': isEditable,
+                        'shadow-custom-pink': getTelefono()?.invalid && getTelefono()?.touched
+                    }"
                     class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
         </div>
     </form>
+    
     
     <!-- Sección botones fuera del formulario -->
     <div class="flex justify-end space-x-4 mt-4 w-full max-w-[851px] mx-auto">
