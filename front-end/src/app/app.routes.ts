@@ -33,6 +33,14 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'postSubject',
+    title: 'Post subject interface',
+    loadComponent: () =>
+      import('./views/subjects/save-subject/save-subject.component').then(
+        (m) => m.SaveSubjectComponent
+      ),
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',

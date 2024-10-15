@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { catchError, map, Observable, of } from 'rxjs';
-import { UserResponse } from '../interfaces/responses.interface';
-import { User } from '../interfaces/user.interface';
+import { UserResponse, UsersResponse } from '../interfaces/responses.interface';
+import { Role, User } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -37,7 +37,22 @@ export class UserService {
         }
       }),
       catchError((err) => {
-        return of(err.message);
+        return of(null);
+      })
+    );
+  }
+
+  getUsersByRole(role: Role): Observable<User[] | null>{
+    return this.http.get<UsersResponse>(`${this.apiUrl}/users:${role}`).pipe(
+      map((res) => {
+        if (res.success) {
+          return res.data;
+        } else {
+          throw new Error(res.message);
+        }
+      }),
+      catchError((err) => {
+        return of(null);
       })
     );
   }
