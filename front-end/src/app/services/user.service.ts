@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 
-
+//DATOS MOCKEADOS PARA: CONSULTAR, MODIFICAR Y EDITAR.
 export interface UserMock {
   firstname: string;
   lastname:  string;
