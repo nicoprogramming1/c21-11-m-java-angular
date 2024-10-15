@@ -49,7 +49,7 @@ export class UserService {
   }
 
   deleteUser(id: string): Observable<null> {
-    return this.http.delete<null>(`${this.apiUrl}/:${id}`).pipe(
+    return this.http.delete<null>(`${this.apiUrl}/${id}`).pipe(
       map(() => null),
       catchError((err) => {
         console.error('Error al eliminar el usuario:', err);

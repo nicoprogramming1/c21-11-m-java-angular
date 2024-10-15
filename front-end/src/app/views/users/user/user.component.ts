@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UserMock, UserService } from '../../../services/user.service';
 import { DeleteComponent } from '../delete/delete.component';
@@ -7,40 +8,58 @@ import { DeleteComponent } from '../delete/delete.component';
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [DeleteComponent, CommonModule],
+  imports: [DeleteComponent, CommonModule, ReactiveFormsModule],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
-export class UserComponent {
+export class UserComponent implements OnInit {
 
-  //datos mock
+  userForm: FormGroup; 
   user!: UserMock | null;
 
-  
-  // CONSULTAR UN USUARIO
+  // Inyección de servicios
   private userService = inject(UserService);
   private route = inject(ActivatedRoute);
+  private fb = inject(FormBuilder); 
 
+  constructor() {
+    this.userForm = this.fb.group({
+      correo: [''],
+      firstname: [''],
+      lastname: [''],
+      birth: [''],
+      dni: [''],
+      rol: [''],
+      legajo: [''],
+      domicilio: [''],
+      localidad: [''],
+      telefono: [''],
+    });
+  }
 
   ngOnInit(): void {
-    const userId = '4'; // datos mock
+    const userId = '5'; 
     this.userService.getUserById(userId).subscribe((data) => {
       this.user = data;
+      if (this.user) {
+        this.userForm.patchValue(this.user); 
+      }
     });
   }
 
   getUserId(): number | null {
-    return this.user ? Number(this.user.id) : null; // Devuelve el ID como número o null si no está definido
-}
+    return this.user ? Number(this.user.id) : null; 
+  }
+
   onUserDeleted() {
     console.log("Usuario eliminado, realizar acciones necesarias aquí.");
-    // Aquí puedes realizar cualquier acción adicional que necesites tras la eliminación
-}
+    
+  }
 
-onRandomButtonClick() {
+  onRandomButtonClick() {
     console.log("Botón aleatorio clickeado");
-    // Aquí puedes implementar la lógica para el botón aleatorio
-}
+    
+  }
 
   /* public product = this.stateService.product;
   public loading = this.stateService.loading;

@@ -1,59 +1,128 @@
-<div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-md">
-    <h1 class="text-2xl font-bold mb-6">Detalles del Usuario</h1>
+<div class="max-w-[55vw] mx-auto bg-white p-8 rounded-lg shadow-md">
+    <div class="flex justify-center mb-6">
+        <img 
+            src="avatar.jpg" 
+            alt="Foto del usuario" 
+            class="rounded-full w-[182px] h-[182px] opacity-100"
+            style="position: relative; top: 0; left: 0; gap: 0px;"
+        />
+    </div>
+
+    <form [formGroup]="userForm" class="w-full max-w-[851px] mx-auto">
+        <div class="mb-4">
+            <label class="block text-left font-inter font-normal text-[24px] leading-[29.05px] mb-2 opacity-50">
+                Correo electrónico*
+            </label>
+            <input 
+                type="email" 
+                formControlName="correo"
+                placeholder="Ingrese su correo electrónico" 
+                class="border border-gray-300 w-full h-[61px] p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+            />
+        </div>
     
-    <div class="mb-4">
-        <label class="block text-2xl font-normal leading-7 text-left">Correo electrónico:</label>
-        <p class="mt-1 text-gray-900">{{ user?.correo }}</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="mb-4">
-            <label class="block text-2xl font-normal leading-7 text-left">Nombre/s:</label>
-            <p class="mt-1 text-gray-900">{{ user?.firstname }}</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="mb-4 flex flex-col">
+                <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Nombre/s*</label>
+                <input 
+                    type="text" 
+                    formControlName="firstname" 
+                    placeholder="Ingrese su nombre" 
+                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                />
+            </div>
+    
+            <div class="mb-4 flex flex-col">
+                <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Apellido/s*</label>
+                <input 
+                    type="text" 
+                    formControlName="lastname" 
+                    placeholder="Ingrese su apellido" 
+                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                />
+            </div>
+    
+            <div class="mb-4 flex flex-col">
+                <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Fecha de nacimiento*</label>
+                <input 
+                    type="date" 
+                    formControlName="birth" 
+                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                />
+            </div>
+    
+            <div class="mb-4 flex flex-col">
+                <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">DNI*</label>
+                <input 
+                    type="text" 
+                    formControlName="dni" 
+                    placeholder="Ingrese su DNI" 
+                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                />
+            </div>
+    
+            <div class="mb-4 flex flex-col">
+                <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Rol*</label>
+                <input 
+                    type="text" 
+                    formControlName="rol" 
+                    placeholder="Ingrese su rol" 
+                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                />
+            </div>
+    
+            <div class="mb-4 flex flex-col">
+                <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Legajo(Sólo profesores)</label>
+                <input 
+                    type="text" 
+                    formControlName="legajo" 
+                    placeholder="Ingrese su legajo" 
+                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                />
+            </div>
+    
+            <div class="mb-4 flex flex-col">
+                <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Domicilio</label>
+                <input 
+                    type="text" 
+                    formControlName="domicilio" 
+                    placeholder="Ingrese su domicilio" 
+                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                />
+            </div>
+    
+            <div class="mb-4 flex flex-col">
+                <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Localidad</label>
+                <input 
+                    type="text" 
+                    formControlName="localidad" 
+                    placeholder="Ingrese su localidad" 
+                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                />
+            </div>
+    
+            <div class="mb-4 flex flex-col">
+                <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Teléfono*</label>
+                <input 
+                    type="text" 
+                    formControlName="telefono" 
+                    placeholder="Ingrese su teléfono" 
+                    class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                />
+            </div>
         </div>
-        <div class="mb-4">
-            <label class="block text-2xl font-normal leading-7 text-left">Apellido/s:</label>
-            <p class="mt-1 text-gray-900">{{ user?.lastname }}</p>
-        </div>
+    </form>
+    
+    <!-- Sección botones fuera del formulario -->
+    <div class="flex justify-end space-x-4 mt-4 w-full max-w-[851px] mx-auto">
+        <app-delete *ngIf="user?.id" [id]="getUserId()" (eliminar)="onUserDeleted()"></app-delete>
+        <button 
+            class="bg-blue-600 text-white"
+            style="width: 222.72px; height: 48.72px; border-radius: 11.6px 0px 0px 0px;" 
+            (click)="onRandomButtonClick()"
+        >
+            Botón Aleatorio
+        </button>
     </div>
-
-    <div class="mb-4">
-        <label class="block text-2xl font-normal leading-7 text-left">Fecha de nacimiento:</label>
-        <p class="mt-1 text-gray-900">{{ user?.birth }}</p>
-    </div>
-
-    <div class="mb-4">
-        <label class="block text-2xl font-normal leading-7 text-left">DNI:</label>
-        <p class="mt-1 text-gray-900">{{ user?.dni }}</p>
-    </div>
-
-    <div class="mb-4">
-        <label class="block text-2xl font-normal leading-7 text-left">Rol:</label>
-        <p class="mt-1 text-gray-900">{{ user?.rol }}</p>
-    </div>
-
-    <div class="mb-4">
-        <label class="block text-2xl font-normal leading-7 text-left">Legajo:</label>
-        <p class="mt-1 text-gray-900">{{ user?.legajo }}</p>
-    </div>
-
-    <div class="mb-4">
-        <label class="block text-2xl font-normal leading-7 text-left">Domicilio:</label>
-        <p class="mt-1 text-gray-900">{{ user?.domicilio }}</p>
-    </div>
-
-    <div class="mb-4">
-        <label class="block text-2xl font-normal leading-7 text-left">Localidad:</label>
-        <p class="mt-1 text-gray-900">{{ user?.localidad }}</p>
-    </div>
-
-    <div class="mb-4">
-        <label class="block text-2xl font-normal leading-7 text-left">Teléfono:</label>
-        <p class="mt-1 text-gray-900">{{ user?.telefono }}</p>
-    </div>
-</div>
-
-<div class="flex justify-start space-x-4 mt-4">
-    <app-delete *ngIf="user?.id" [id]="getUserId()" (eliminar)="onUserDeleted()"></app-delete>
-    <button class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700" (click)="onRandomButtonClick()">Botón Aleatorio</button>
+    
 </div>

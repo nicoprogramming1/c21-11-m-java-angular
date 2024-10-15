@@ -10,12 +10,10 @@ module.exports = {
     }),
     extend: {
       colors: {
-        "custom-green": "#36D39A",
-        "custom-gray": "#C8CDCB",
-        "custom-purple": "#9795B5",
-        "custom-pink": "#FF9EB1",
-        "custom-green": "#36D39A",
-        "custom-gray": "#C8CDCB", //Esta repetido el gray
+        "custom-black": "#000000",
+        "custom-purple": "#827F98",
+        "custom-pink": "#FF8997",
+        "custom-green": "#36D39A"
       },
     },
     animation: {
