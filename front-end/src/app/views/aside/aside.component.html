@@ -1,6 +1,6 @@
-<div class="flex min-h-screen bg-gray-100 ">
+<div class="flex h-full bg-gray-100 ">
     <!-- Sidebar fijo -->
-    <aside class="bg-white text-black w-72 space-y-6 py-7 px-2 h-screen border-r border-y-gray-950">
+    <aside class="bg-white text-black w-72 space-y-6 py-7 px-2 h-auto border-r border-y-gray-950">
         <nav>
             
             <ul class="space-y-2">
@@ -19,8 +19,8 @@
     </aside>
 
     <!-- Contenido Principal -->
-    <div class="flex-1 p-10 bg-white place-content-center">
-        <main>
+    <div class="flex-1 p-10 bg-white">
+        <main class=" max-w-full">
 
             @if (currentView() === 'list'){
                 <app-list-user></app-list-user>

@@ -10,7 +10,7 @@
         class="flex-grow p-2 border rounded-md"
       />
       <select
-        [ngModel]="selectedRole"
+        
         [ngModel]="selectedRole"
         (ngModelChange)="selectedRole = $event; earchUsers()"
         
@@ -22,7 +22,8 @@
         <option value="Estudiante">Estudiante</option>
       </select>
       <button
-       
+      
+      (click)="clearFilters()"
         class="px-4 py-2 bg-custom-pink text-gray-700 rounded-md hover:bg-gray-300"
       >
         Limpiar filtros
