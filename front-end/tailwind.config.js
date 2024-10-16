@@ -10,10 +10,12 @@ module.exports = {
     }),
     extend: {
       colors: {
+        "custom-green": "#36D39A",
         "custom-black": "#000000",
         "custom-purple": "#827F98",
-        "custom-pink": "#FF8997",
-        "custom-green": "#36D39A"
+        "custom-pink": "#FF9EB1",
+        "custom-green": "#36D39A",
+        "custom-gray": "#C8CDCB",
       },
     },
     animation: {
@@ -339,6 +341,11 @@ module.exports = {
         '"Liberation Mono"',
         '"Courier New"',
         "monospace",
+      ],
+
+
+      Inter :[
+        "Inter"
       ],
     },
     fontSize: {

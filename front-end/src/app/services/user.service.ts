@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
-import { User, UserResponse } from '../interfaces/responses.interface';
 
-/*DATOS MOCKEADOS PARA: CONSULTAR, MODIFICAR Y EDITAR.
 export interface UserMock {
   firstname: string;
   lastname:  string;
@@ -16,8 +14,7 @@ export interface UserMock {
   telefono:  number;
   correo:    string;
   id:        string;
-}*/
-
+}
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +26,7 @@ export class UserService {
 
   
   
-  /* FUNCION SAVE USER NO MOCK
+
   saveUser(user: UserMock): Observable<UserMock | null> {
     return this.http.post<UserMock>(this.apiUrl, user).pipe(
       map((res) => res),
@@ -71,11 +68,9 @@ export class UserService {
   }
 }
 
-    */
+     
 
-
-
-
+/* FUNCION SAVE USER NO MOCK
   saveUser(user: User): Observable<User | null> {
     return this.http.post<UserResponse>(`${this.apiUrl}/user`, user).pipe(
       map((res) => {
@@ -121,4 +116,4 @@ export class UserService {
     );
   }
 
-}
+}*/
