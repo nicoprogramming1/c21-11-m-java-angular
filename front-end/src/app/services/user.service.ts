@@ -42,8 +42,8 @@ export class UserService {
     );
   }
 
-  getUsersByRole(role: Role): Observable<User[] | null>{
-    return this.http.get<UsersResponse>(`${this.apiUrl}/users:${role}`).pipe(
+  getUsersByRole(role: Role): Observable<User[] | null> {
+    return this.http.get<UsersResponse>(`${this.apiUrl}/users/role/${role}`).pipe(
       map((res) => {
         if (res.success) {
           return res.data;
@@ -52,10 +52,12 @@ export class UserService {
         }
       }),
       catchError((err) => {
-        return of(null);
+        console.error('Error al obtener usuarios:', err); // Loguea el error para que sea visible
+        return of(null); // Sigue devolviendo null pero ahora puedes ver el error
       })
     );
   }
+  
 
   deleteUser(id: number): Observable<null> {
     return this.http.delete<UserResponse>(`${this.apiUrl}/user:${id}`).pipe(

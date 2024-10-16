@@ -1,6 +1,7 @@
 import { Califications } from './course.interface';
 
 export interface User {
+  id?: string,
   firstName: string;
   lastName: string;
   dni: Dni;
@@ -34,10 +35,10 @@ export interface Legajo {
 }
 
 export enum Role {
-  PROFESOR = 'Profesor',
-  ALUMNO = 'Alumno',
-  ADMINISTRADOR = 'Administrador',
-  TUTOR = 'Tutor',
+  PROFESOR = 'PROFESOR',
+  ALUMNO = 'ALUMNO',
+  ADMINISTRADOR = 'ADMINISTRADOR',
+  TUTOR = 'TUTOR',
 }
 
 export enum UserState {

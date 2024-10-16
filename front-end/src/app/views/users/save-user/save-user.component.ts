@@ -28,12 +28,12 @@ export class SaveUserComponent {
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
-      email: [''],
-      firstName: [''],
-      lastName: [''],
-      birthDay: [''],
-      dni: [''],
-      role: [''],
+      email: ['', Validators.required, Validators.email],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      birthDay: ['', Validators.required],
+      dni: ['', Validators.required],
+      role: ['', Validators.required],
       legajo: [''],
     });
   }

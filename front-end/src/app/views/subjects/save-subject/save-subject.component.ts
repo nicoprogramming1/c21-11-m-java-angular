@@ -20,19 +20,36 @@ export class SaveSubjectComponent {
 
   registerForm!: FormGroup;
   days = Object.values(WeekDays);
+  selectedDays: string[] = []
 
   // Observable para los profesores
   teachers$ = this.userService.getUsersByRole(Role.PROFESOR);
+  
 
   ngOnInit(): void {
+    this.teachers$.subscribe((teachers) => {
+      console.log('Profesores recibidos en el cliente:', teachers);
+    });
+
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
       topics: [''],
       description: [''],
       schedule: ['', Validators.required],
-      days: ['', Validators.required],
+      days: [[], Validators.required],
       teacher: ['', Validators.required],
     });
+  }
+
+  // Método para manejar los cambios de las checkboxes
+  onCheckboxChange(event: any) {
+    const day = event.target.value;
+    if (event.target.checked) {
+      this.selectedDays.push(day);  // dia seleccionado
+    } else {
+      this.selectedDays = this.selectedDays.filter(d => d !== day); // deseleccionar dia
+    }
+    this.registerForm.controls['days'].setValue(this.selectedDays);
   }
 
   onSubmit(): void {
@@ -43,8 +60,10 @@ export class SaveSubjectComponent {
         description: this.registerForm.value.description,
         schedule: this.registerForm.value.schedule,
         days: this.registerForm.value.days,
-        teacher: this.registerForm.value.teacher,
+        teacher: this.registerForm.value.teacher, // tiene el id de teacher
       };
+
+      console.log("Onsubmit id teacher", subject.teacher)
 
       this.subjectService.saveSubject(subject).subscribe({
         next: (response) => {
@@ -54,7 +73,7 @@ export class SaveSubjectComponent {
           console.error('Error registering subject', error);
         },
         complete: () => {
-          this.resetForm(); // Reseteamos el formulario al completar la operación
+          this.resetForm(); // Reseteamos el formulario
         },
       });
     }
