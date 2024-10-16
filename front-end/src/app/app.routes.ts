@@ -28,14 +28,14 @@ export const routes: Routes = [
                 (m) => m.DeleteComponent
               ),
           },
-          /*{
+          {
             path: 'post',
             title: 'Post user interface',
             loadComponent: () =>
               import('./views/users/save-user/save-user.component').then(
                 (m) => m.SaveUserComponent
               ),
-          },*/
+          },
           {
             path: '',
             redirectTo: 'dashboard',

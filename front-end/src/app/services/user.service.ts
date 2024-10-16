@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
+import { UserResponse } from '../interfaces/responses.interface';
+import { User } from '../models/user/user.model';
 
+/* INTERFAZ MOCK PARA CONSULTAR, MOD Y ELIMINAR USUARIOS DE ADM
 export interface UserMock {
   firstname: string;
   lastname:  string;
@@ -15,7 +18,7 @@ export interface UserMock {
   correo:    string;
   id:        string;
 }
-
+*/
 @Injectable({
   providedIn: 'root',
 })
@@ -27,6 +30,7 @@ export class UserService {
   
   
 
+/* FUNCIOES PARA MODIFICAR, CONSULTAR Y ELIMINAR DESDE ADMI MOCK
   saveUser(user: UserMock): Observable<UserMock | null> {
     return this.http.post<UserMock>(this.apiUrl, user).pipe(
       map((res) => res),
@@ -68,9 +72,8 @@ export class UserService {
   }
 }
 
-     
+ */    
 
-/* FUNCION SAVE USER NO MOCK
   saveUser(user: User): Observable<User | null> {
     return this.http.post<UserResponse>(`${this.apiUrl}/user`, user).pipe(
       map((res) => {
@@ -116,4 +119,4 @@ export class UserService {
     );
   }
 
-}*/
+}

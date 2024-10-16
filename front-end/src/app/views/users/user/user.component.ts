@@ -139,7 +139,7 @@ export class UserComponent implements OnInit {
   }
 
   onUserDeleted() {
-    console.log("Usuario eliminado, realizar acciones necesarias aquí.");
+    console.log("Usuario eliminado con éxito(Hacer modal)");
   }
 
   toggleEditMode() {
