@@ -5,12 +5,12 @@
             
             <ul class="space-y-2">
                 <li>
-                    <a href="#" class=" py-2.5 px-4 rounded transition duration-200 hover:bg-slate-300 flex">
+                    <a href="#" (click)="setView('list',$event)" class=" py-2.5 px-4 rounded transition duration-200 hover:bg-slate-300 flex"  >
                      <img src="IcoGuardar.png" alt="Guardar" class="h-5 mx-5">   <p class="font-Inter font-semibold">Lista de usuarios</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/post" class=" py-2.5 px-4 rounded transition duration-200 hover:bg-slate-300 flex">
+                    <a href="#"  (click)="setView('register',$event)" class=" py-2.5 px-4 rounded transition duration-200 hover:bg-slate-300 flex">
                        <img src="IcoGuardarB.png" alt="Registrar" class="h-5 mx-5"> Registrar usuario
                     </a>
                 </li>
@@ -19,10 +19,18 @@
     </aside>
 
     <!-- Contenido Principal -->
-    <div class="flex-1 p-10 bg-white">
+    <div class="flex-1 p-10 bg-white place-content-center">
         <main>
+
+            @if (currentView() === 'list'){
+                <app-list-user></app-list-user>
+            }@else if (currentView() === 'register') {
+
+                <app-save-user></app-save-user>
+            }
             
- <app-list-user></app-list-user>
+          
+          
             
         </main>
     </div>
