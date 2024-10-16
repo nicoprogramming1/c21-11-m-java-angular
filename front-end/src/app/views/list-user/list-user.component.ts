@@ -31,7 +31,26 @@ export class ListUserComponent {
       this.filteredUsers = [...this.users];
     }
   }
-  
+  earchUsers(): void {
+    this.filteredUsers = this.users.filter(user => 
+      (user.firstName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+       user.lastName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+       user.DNI.toString().includes(this.searchTerm)) &&
+      (this.selectedRole === '' || user.Role === this.selectedRole)
+    );
+  }
+
+  clearFilters(): void {
+    this.searchTerm = '';
+    this.selectedRole = '';
+    this.filteredUsers = [...this.users];
+  }
+
+  deleteUser(dni: string): void {
+    this.users = this.users.filter(user => user.DNI.toString() !== dni);
+    this.filteredUsers = this.filteredUsers.filter(user => user.DNI.toString() !== dni);
+    localStorage.setItem('users', JSON.stringify(this.users));
+  }
  
 
   

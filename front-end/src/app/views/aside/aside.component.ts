@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ListUserComponent } from '../list-user/list-user.component';
+import { routes } from '../../app.routes';
+
 
 @Component({
   selector: 'app-aside',

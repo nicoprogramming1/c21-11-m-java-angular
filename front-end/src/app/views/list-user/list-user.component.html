@@ -3,19 +3,23 @@
   
     <div class="mb-4 flex flex-wrap items-center gap-2">
       <input
-        [ngModel]="searchTerm"
+      [ngModel]="searchTerm"
+      (ngModelChange)="searchTerm = $event; earchUsers()"
         
         placeholder="Buscar por nombre o DNI"
         class="flex-grow p-2 border rounded-md"
       />
       <select
         [ngModel]="selectedRole"
+        [ngModel]="selectedRole"
+        (ngModelChange)="selectedRole = $event; earchUsers()"
         
         class="p-2 border rounded-md"
       >
         <option value="">Todos los roles</option>
-        <option value="admin">Administrador</option>
-        <option value="user">Usuario</option>
+        <option value="Administrador">Administrador</option>
+        <option value="Profesor">Profesor</option>
+        <option value="Estudiante">Estudiante</option>
       </select>
       <button
        

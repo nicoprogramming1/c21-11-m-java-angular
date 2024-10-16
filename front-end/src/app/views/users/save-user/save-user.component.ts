@@ -17,8 +17,10 @@ export class SaveUserComponent implements OnInit {
   private userService = inject(UserService);
   registerForm!: FormGroup;
   message: string = '';
+  private fb = inject(FormBuilder)
+  showSuccessMessage: boolean = false;
 
-  constructor(private fb: FormBuilder) {}
+  
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -45,6 +47,10 @@ export class SaveUserComponent implements OnInit {
         firstName: this.registerForm.value.firstName,
         date: this.registerForm.value.birthday,
       };
+      this.showSuccessMessage = true;
+      setTimeout(() => {
+        this.showSuccessMessage = false;
+      }, 3000);
       
       // Save to localStorage
       this.saveToLocalStorage(user);

@@ -42,18 +42,22 @@
                 <label for="role" class="block text-custom-purple text-sm font-medium mb-2">Rol*</label>
                 <select id="role" name="role" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-custom-purple" formControlName ="role">
                     <option value="">Seleccionar rol</option>
-                    <option value="student">Estudiante</option>
-                    <option value="professor">Profesor</option>
+                    <option value="Estudiante">Estudiante</option>
+                    <option value="Profesor">Profesor</option>
                 </select>
             </div>
+            @if(registerForm.get('role')?.value === 'Profesor'){
             <div>
                 <label for="legajo" class="block text-custom-purple text-sm font-medium mb-2">Legajo (solo Rol de Profesor)</label>
+
                 <input type="text" id="legajo" name="legajo" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-custom-purple" formControlName = "legajo">
+
                 @if (registerForm.get('legajo')?.invalid && (registerForm.get('legajo')?.dirty || registerForm.get('legajo')?.touched)) {
+                    
                     <p class="text-custom-pink font-medium text-base">Legajo introducido incorrecto</p>
     
                 }
-            </div>
+            </div> }
         </div>
         <button type="submit" class="w-full bg-custom-green text-black font-medium py-2 px-4 rounded-md mb-4 hover:bg-opacity-90 transition duration-300">
             Registrar usuario
@@ -62,4 +66,24 @@
             Reestablecer usuario
         </button >
     </form>
+    @if(showSuccessMessage){
+
+
+        <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center ">
+            <div class="bg-white rounded-lg p-6 w-80 h-64 flex flex-col items-center ">
+              <div class=" rounded-full p-2 mb-4">
+                <img src="garrapata.png" alt="" class="h-16">
+                 
+              </div>
+              <p class="text-center mb-4">Usuario registrado con éxito</p>
+              <button
+                
+                class="bg-custom-green text-black px-6 py-2 rounded-md hover:bg-custom-green transition-colors   w-44 font-Inter"
+                        >
+                Listo
+              </button>
+            </div>
+          </div>
+    }
+   
 </div>
