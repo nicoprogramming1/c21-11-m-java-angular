@@ -37,7 +37,22 @@ export const routes: Routes = [
     title: 'Iniciar Sesion',
     loadComponent: () =>
       import('./views/login/login.component').then(
-        (m) => m.LoginComponent
+        (m) => m.LoginComponent   ),
+      },
+    {
+    path: 'postSubject',
+    title: 'Post subject interface',
+    loadComponent: () =>
+      import('./views/subjects/save-subject/save-subject.component').then(
+        (m) => m.SaveSubjectComponent
+      ),
+  },
+  {
+    path: 'enrollStudent/:id',
+    title: 'Inscribir alumno en curso',
+    loadComponent: () =>
+      import('./views/courses/enroll-student/enroll-student.component').then(
+        (m) => m.EnrollStudentComponent
       ),
   },
   {
