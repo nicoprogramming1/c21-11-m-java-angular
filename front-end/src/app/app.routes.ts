@@ -41,7 +41,7 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'postStudentCourse',
+    path: 'enrollStudent/:id',
     title: 'Inscribir alumno en curso',
     loadComponent: () =>
       import('./views/subjects/enroll-student/enroll-student.component').then(

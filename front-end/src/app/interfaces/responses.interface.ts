@@ -18,3 +18,13 @@ export interface SubjectResponse {  // cualquier tipo de usuario individual (get
     message: string,
     data: Subject
 }
+
+export interface EnrollResponse {   // respuesta a inscribir alumno
+    success: boolean;
+    message: string;
+    data: {
+      studentId: string;
+      courseId: string;
+    };
+  }
+  

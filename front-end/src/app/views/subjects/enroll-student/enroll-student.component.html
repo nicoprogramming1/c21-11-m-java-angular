@@ -12,7 +12,7 @@
                     <h3 class="font-semibold">{{ student.firstName }} {{ student.lastName }}</h3>
                     <span>DNI: {{ student.dni }}</span>
                 </div>
-                <button (click)="enrollStudentInCourse(student)" class="bg-custom-green text-black p-2 rounded-md font-Inter w-40 h-10 m-2">
+                <button (click)="enrollStudentInCourse(student.id!)" class="bg-custom-green text-black p-2 rounded-md font-Inter w-40 h-10 m-2">
                     Inscribir alumno
                 </button>
             </div>
