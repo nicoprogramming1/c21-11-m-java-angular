@@ -49,6 +49,14 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'courses/:id',
+    title: 'Consultar curso',
+    loadComponent: () =>
+      import('./views/courses/course/course.component').then(
+        (m) => m.CourseComponent
+      ),
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',

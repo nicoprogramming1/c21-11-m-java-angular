@@ -1,3 +1,4 @@
+import { Course } from "./course.interface";
 import { Subject } from "./subject.interface";
 import { User } from "./user.interface";
 
@@ -22,9 +23,11 @@ export interface SubjectResponse {  // cualquier tipo de usuario individual (get
 export interface EnrollResponse {   // respuesta a inscribir alumno
     success: boolean;
     message: string;
-    data: {
-      studentId: string;
-      courseId: string;
-    };
-  }
+    data: User
+}
   
+export interface CourseResponse {
+    success: boolean,
+    message: string,
+    data: Course
+}

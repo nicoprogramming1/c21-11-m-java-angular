@@ -1,1 +1,19 @@
-<p>course works!</p>
+<div *ngIf="course" class="max-w-[75vw] mx-auto bg-white p-8 rounded-lg shadow-md">
+    <h1 class="text-3xl font-semibold mb-4">Curso: {{ course.course }}</h1>
+    <p class="text-lg mb-6">Detalle: {{ course.detalle }}</p>
+  
+    <h2 class="text-2xl font-semibold mb-4">Asignaturas</h2>
+    <ul>
+      <li *ngFor="let subject of course.subjects">
+        {{ subject.name }} - Profesor: {{ subject.teacher.firstName }} {{ subject.teacher.lastName }}
+      </li>
+    </ul>
+  
+    <h2 class="text-2xl font-semibold mb-4">Alumnos</h2>
+    <ul>
+      <li *ngFor="let student of course.students">
+        {{ student.firstName }} {{ student.lastName }} - DNI: {{ student.dni }}
+      </li>
+    </ul>
+  </div>
+  
