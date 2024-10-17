@@ -1,0 +1,47 @@
+<div class="min-h-screen flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-md mx-auto">
+        <div class="flex items-center mb-6 justify-center">
+            <h1 class="text-2xl font-bold text-custom-purple">Iniciar Sesion</h1>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <div class="mb-4">
+                <label for="email" class="block text-custom-purple text-sm font-medium mb-2">Correo electronico </label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-custom-purple"
+                    formControlName="email"
+                >
+                <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
+                    <p class="text-custom-pink font-medium text-base">Correo electronico incorrecto</p>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="dni" class="block text-custom-purple text-sm font-medium mb-2">DNI </label>
+                <input
+                    type="text"
+                    id="dni"
+                    name="dni"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-custom-purple"
+                    formControlName="dni"
+                >
+                <div *ngIf="loginForm.get('dni')?.invalid && (loginForm.get('dni')?.dirty || loginForm.get('dni')?.touched)">
+                    <p class="text-custom-pink font-medium text-base">DNI invalido</p>
+                </div>
+            </div>
+            <button
+                type="submit"
+                class="w-full bg-custom-green text-black font-medium py-2 px-4 rounded-md mb-4 hover:bg-opacity-90 transition duration-300"
+                [disabled]="loginForm.invalid"
+            >
+                Ingresar
+            </button>
+            <div *ngIf="errorMessage" class="text-custom-pink font-medium text-base text-center">
+                {{ errorMessage }}
+            </div>
+        </form>
+    </div>
+</div>

@@ -33,6 +33,14 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'login',
+    title: 'Iniciar Sesion',
+    loadComponent: () =>
+      import('./views/login/login.component').then(
+        (m) => m.LoginComponent
+      ),
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
