@@ -13,8 +13,8 @@ export class CourseService {
   private http = inject(HttpClient);
   private apiUrl = environment.apiUrl;
 
-  getCourseById(courseId: string): Observable<Course> {
-    return this.http.get<CourseResponse>(`${this.apiUrl}/courses/${courseId}`).pipe(
+  getCourseById(id: string): Observable<Course> {
+    return this.http.get<CourseResponse>(`${this.apiUrl}/courses/${id}`).pipe(
       map((res) => {
         if (res.success) {
           return res.data; // Devolver solo el curso que está en el campo 'data'

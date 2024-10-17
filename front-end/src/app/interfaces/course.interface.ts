@@ -6,7 +6,7 @@ export interface Course {
   course: string;
   subjects: Subject[];
   students: User[];
-  detalle: string;
+  detail: string;
 }
 export interface Califications {
   note: number;
