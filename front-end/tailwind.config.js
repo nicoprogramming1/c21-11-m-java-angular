@@ -11,8 +11,8 @@ module.exports = {
     extend: {
       colors: {
         "custom-green": "#36D39A",
-        "custom-black": "#000000",
-        "custom-purple": "#827F98",
+        "custom-gray": "#C8CDCB",
+        "custom-purple": "#9795B5",
         "custom-pink": "#FF9EB1",
         "custom-green": "#36D39A",
         "custom-gray": "#C8CDCB",
@@ -341,11 +341,6 @@ module.exports = {
         '"Liberation Mono"',
         '"Courier New"',
         "monospace",
-      ],
-
-
-      Inter :[
-        "Inter"
       ],
     },
     fontSize: {

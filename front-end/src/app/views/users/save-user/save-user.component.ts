@@ -1,9 +1,15 @@
-import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Role } from '../../../interfaces/user.interface';
-import { User } from '../../../models/user/user.model';
 import { UserService } from '../../../services/user.service';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { Role, User } from '../../../interfaces/user.interface';
+import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser'; // importado a mano
 
 @Component({
   selector: 'app-save-user',
@@ -30,13 +36,10 @@ export class SaveUserComponent {
       role: ['', Validators.required],
       legajo: [''],
     });
-}
-
+  }
 
   onSubmit(): void {
-    console.log("pasan cosas")
-    if (true) {
-      console.log("Valido")
+    if (this.registerForm.valid) {
       const user: User = {
         dni: { dni: Number(this.registerForm.value.dni) },
         email: this.registerForm.value.email,
@@ -60,6 +63,5 @@ export class SaveUserComponent {
 
   resetForm(): void {
     this.registerForm.reset();
-    this.message = '';
   }
 }

@@ -10,7 +10,8 @@ import { UserService } from '../../../services/user.service';
   styleUrl: './delete.component.css'
 })
 export class DeleteComponent {
-  @Input() id?: number | null;
+  @Input() id!: number;
+  buttonText: string = 'Eliminar';
   mostrarModal: boolean = false;
 
   @Output() eliminar = new EventEmitter<void>(); 
@@ -26,8 +27,7 @@ export class DeleteComponent {
   }
 
   confirmarEliminacion() {
-    if (this.id != null)
-    this.userService.deleteUser(this.id.toString()).subscribe({
+    this.userService.deleteUser(this.id).subscribe({
       next: () => {
         console.log("Usuario eliminado con éxito");
         this.eliminar.emit();

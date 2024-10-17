@@ -1,44 +1,40 @@
-import { Dni, Address, Email, UserState, Role, Phone } from "../../interfaces/user.interface";
+import { Dni, Domicilio, Email, EstadoUsuario, Rol, Telefono } from "../../interfaces/user.interface";
 
 
 export class User {
-  public firstName: string;
-  public lastName: string;
-  public DNI: Dni;
-  public address?: Address;
+  public nombre: string;
+  public apellido: string;
+  public dni: Dni;
+  public domicilio: Domicilio;
   public email: Email;
-  public date: Date;
-  public photoProfile?: string;
-  public phone?: Phone;
-  public Role: Role;
-  public userState?: UserState;
-  public legojo?: string;
+  public fechaNacimiento: Date;
+  public fotoPerfil?: string;
+  public telefono: Telefono;
+  public rol: Rol;
+  public estadoUsuario: EstadoUsuario;
 
   constructor(
-    firstName: string,
-    lastName: string,
-    DNI: Dni,
-    address: Address,
+    nombre: string,
+    apellido: string,
+    dni: Dni,
+    domicilio: Domicilio,
     email: Email,
-    date: Date,
-    photoProfile: string,
-    phone: Phone,
-    Role: Role,
-    userState: UserState,
-    legojo: string
+    fechaNacimiento: Date,
+    fotoPerfil: string,
+    telefono: Telefono,
+    rol: Rol,
+    estadoUsuario: EstadoUsuario
   ) {
-    
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.DNI = DNI;
-    this.address = address;
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.dni = dni;
+    this.domicilio = domicilio;
     this.email = email;
-    this.date = date;
-    this.photoProfile = photoProfile;
-    this.phone = phone;
-    this.Role = Role;
-    this.userState = userState;
-    this.legojo = legojo;
+    this.fechaNacimiento = fechaNacimiento;
+    this.fotoPerfil = fotoPerfil;
+    this.telefono = telefono;
+    this.rol = rol;
+    this.estadoUsuario = estadoUsuario;
   }
 
 }

@@ -1,40 +1,20 @@
-<button
-  class="bg-custom-pink text-custom-black font-normal w-[223px] h-[49px] rounded-[12px] md:w-[223px] md:h-[49px] transition duration-300 ease-in-out transform hover:scale-105"
-  (click)="abrirConfirmacion()">
-  Eliminar Usuario
-</button>
+<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" (click)="abrirConfirmacion()">
+    {{ buttonText }}
+  </button>
   
-<!-- Modal de confirmación de eliminación -->
-<div
-  *ngIf="mostrarModal"
-  class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
->
-  <div
-    class="bg-white w-[415px] h-[225px] p-6 border border-gray-700 rounded-lg shadow-lg flex flex-col justify-around"
-  >
-    <h2
-      class="font-inter text-[24px] font-light leading-[29.05px] text-center w-[274px] h-[58px] mx-auto opacity-100"
-      style="top: 674px; left: 764px; gap: 0px;"
-    >
-      ¿Está seguro de eliminar a este usuario?
-    </h2>
-
-    <div class="flex justify-center space-x-4">
-      <button
-        class="bg-custom-pink hover:bg-custom-pink-dark text-black font-norma py-2 px-4 rounded-lg w-32"
-        (click)="cerrarModal()"
-      >
-        Cancelar
-      </button>
-      <button
-        class="bg-custom-green hover:bg-custom-green-dark text-black font-normal py-2 px-4 rounded-lg w-32"
-        (click)="confirmarEliminacion()"
-      >
-        Sí, seguro
-      </button>
+  <!-- Modal para confirmar eliminacion -->
+  <div *ngIf="mostrarModal" class="fixed inset-0 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg shadow-lg p-4">
+      <h2 class="text-lg font-semibold">Confirmación</h2>
+      <p>¿Estás seguro de que deseas eliminar este usuario?</p>
+      <div class="mt-4">
+        <button class="bg-red-500 text-white py-2 px-4 rounded" (click)="confirmarEliminacion()">
+          Sí, eliminar
+        </button>
+        <button class="bg-gray-300 text-gray-700 py-2 px-4 rounded" (click)="cerrarModal()">
+          Cancelar
+        </button>
+      </div>
     </div>
   </div>
-</div>
-
-
   
