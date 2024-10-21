@@ -1,6 +1,7 @@
 import { User } from "./user.interface";
 
 export interface Subject {
+  id?: string,
   name: string;
   topics?: string;
   description?: string;
