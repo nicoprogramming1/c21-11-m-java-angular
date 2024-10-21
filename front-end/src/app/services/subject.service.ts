@@ -13,7 +13,7 @@ export class SubjectService {
   private apiUrl = environment.apiUrl;
 
   getSubjectById(id: string): Observable<Subject | null> {
-    return this.http.get<SubjectResponse>(`${this.apiUrl}/subjects`).pipe(
+    return this.http.get<SubjectResponse>(`${this.apiUrl}/subjects/${id}`).pipe(
       map((res) => {
         if (res.success) {
           return res.data;
