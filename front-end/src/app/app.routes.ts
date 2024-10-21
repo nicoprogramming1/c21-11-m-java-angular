@@ -12,9 +12,7 @@ export const routes: Routes = [
     path: 'user/:id',
     title: 'Get user interface',
     loadComponent: () =>
-      import('./views/users/user/user.component').then(
-        (m) => m.UserComponent
-      ),
+      import('./views/users/user/user.component').then((m) => m.UserComponent),
   },
   {
     path: 'delete/:id',
@@ -36,10 +34,9 @@ export const routes: Routes = [
     path: 'login',
     title: 'Iniciar Sesion',
     loadComponent: () =>
-      import('./views/login/login.component').then(
-        (m) => m.LoginComponent   ),
-      },
-    {
+      import('./views/login/login.component').then((m) => m.LoginComponent),
+  },
+  {
     path: 'postSubject',
     title: 'Post subject interface',
     loadComponent: () =>
@@ -62,6 +59,15 @@ export const routes: Routes = [
       import('./views/courses/course/course.component').then(
         (m) => m.CourseComponent
       ),
+  },
+  {
+    // debe crear una evaluacion en la asignatura en la que esta gestionando (/:subjectId)
+    path: 'postEvaluation/:subjectId',
+    title: 'Post evaluation interface',
+    loadComponent: () =>
+      import(
+        './views/qualifications/save-evaluation/save-evaluation.component'
+      ).then((m) => m.SaveEvaluationComponent),
   },
   {
     path: '',
