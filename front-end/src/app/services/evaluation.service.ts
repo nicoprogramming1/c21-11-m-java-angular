@@ -3,7 +3,8 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Evaluation, Observation } from '../interfaces/evaluation.interface';
 import { catchError, map, Observable, of } from 'rxjs';
-import { EvaluationResponse, ObservationResponse } from '../interfaces/responses.interface';
+import { EvaluationResponse, ObservationResponse, QualificationResponse } from '../interfaces/responses.interface';
+import { Qualification } from '../interfaces/qualification.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,23 @@ export class EvaluationService {
 
   saveObservation(observation: Observation): Observable<Observation | null>{
     return this.http.post<ObservationResponse>(`${this.apiUrl}/observations`, observation).pipe(
+      map((res) => {
+        if (res.success) {
+          return res.data;
+        } else {
+          throw new Error(res.message);
+        }
+      }),
+      catchError((err) => {
+        return of(err.message);
+      })
+    );
+  }
+
+  evaluateStudent(qualification: Qualification, evaluationId: string): Observable<Qualification | null>{
+    const payload = { qualification, evaluationId }
+
+    return this.http.post<QualificationResponse>(`${this.apiUrl}/qualifications`, payload).pipe(
       map((res) => {
         if (res.success) {
           return res.data;
