@@ -70,6 +70,15 @@ export const routes: Routes = [
       ).then((m) => m.SaveEvaluationComponent),
   },
   {
+    // debe crear una evaluacion en la asignatura en la que esta gestionando (/:subjectId)
+    path: 'postObservation',
+    title: 'Post observation interface',
+    loadComponent: () =>
+      import(
+        './views/qualifications/save-observation/save-observation.component'
+      ).then((m) => m.SaveObservationComponent),
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',

@@ -1,5 +1,5 @@
 import { Course } from "./course.interface";
-import { Evaluation } from "./evaluation.interface";
+import { Evaluation, Observation } from "./evaluation.interface";
 import { Subject } from "./subject.interface";
 import { User } from "./user.interface";
 
@@ -37,4 +37,10 @@ export interface EvaluationResponse {
     success: boolean,
     message: string,
     data: Evaluation
+}
+
+export interface ObservationResponse {
+    success: boolean,
+    message: string,
+    data: Observation
 }
