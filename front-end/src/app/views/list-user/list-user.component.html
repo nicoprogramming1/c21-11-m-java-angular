@@ -1,0 +1,55 @@
+<div class="container mx-auto p-4 ">
+ 
+  
+    <div class="mb-4 flex flex-wrap items-center gap-2">
+      <input
+      [ngModel]="searchTerm"
+      (ngModelChange)="searchTerm = $event; earchUsers()"
+        
+        placeholder="Buscar por nombre o DNI"
+        class="flex-grow p-2 border rounded-md"
+      />
+      <select
+        
+        [ngModel]="selectedRole"
+        (ngModelChange)="selectedRole = $event; earchUsers()"
+        
+        class="p-2 border rounded-md"
+      >
+        <option value="">Todos los roles</option>
+        <option value="Administrador">Administrador</option>
+        <option value="Profesor">Profesor</option>
+        <option value="Estudiante">Estudiante</option>
+      </select>
+      <button
+      
+      (click)="clearFilters()"
+        class="px-4 py-2 bg-custom-pink text-gray-700 rounded-md hover:bg-gray-300"
+      >
+        Limpiar filtros
+      </button>
+    </div>
+  
+    @if (filteredUsers.length) {
+      
+          @for (users of filteredUsers; track users.dni) {
+           <div class="flex justify-between border border-gray-300 p-4 rounded-lg my-6"> 
+             <div>
+
+            <h3 class="font-semibold">{{users.firstName}} ({{users.role}})</h3> 
+            <p>DNI:{{users.dni}}</p>
+           </div>
+
+     <button class="bg-custom-green text-black  p-2 rounded-md  font-Inter w-28 h-10 m-2">Consultar</button>
+
+           </div>
+           
+        
+        
+        }
+    } @else {
+      <p class="text-center mt-4 text-gray-500">
+        No se encontraron usuarios.
+      </p>
+    } 
+  </div>
