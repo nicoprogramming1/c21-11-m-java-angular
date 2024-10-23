@@ -1,0 +1,49 @@
+<div class="flex justify-center">
+	<div class="bg-white rounded-lg shadow-xl p-8 w-full max-w-3xl">
+		<div class="flex items-center mb-6 place-content-center">
+			<h1 class="text-2xl font-bold text-custom-purple">
+				Registrar Evaluación
+			</h1>
+		</div>
+		<p class="text-custom-pink text-sm mb-6 text-center">
+			Los campos marcados con * son obligatorios
+		</p>
+		<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+			<!-- Campo para la fecha de evaluación -->
+			<div class="mb-4">
+				<label for="evaluationDate" class="block text-custom-purple text-sm font-medium mb-2">Fecha de Evaluación*</label>
+				<input type="date" id="evaluationDate" name="evaluationDate" required
+					class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-custom-purple"
+					formControlName="evaluationDate" />
+			</div>
+			
+			<!-- Campo para los temas -->
+			<div class="mb-4">
+				<label for="topics" class="block text-custom-purple text-sm font-medium mb-2">Temas*</label>
+				<textarea id="topics" name="topics" required
+					class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-custom-purple"
+					formControlName="topics"></textarea>
+			</div>
+
+			<!-- Campo para los comentarios -->
+			<div class="mb-4">
+				<label for="comments" class="block text-custom-purple text-sm font-medium mb-2">Comentarios</label>
+				<textarea id="comments" name="comments"
+					class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-custom-purple"
+					formControlName="comments"></textarea>
+			</div>
+
+			<!-- Botones de acción -->
+			<div class="flex flex-col sm:flex-row justify-start gap-4 mt-6">
+				<button type="submit"
+					class="w-full sm:w-auto bg-custom-green text-black font-medium py-2 px-4 rounded-md hover:bg-opacity-90 transition duration-300">
+					Registrar Evaluación
+				</button>
+				<button type="reset"
+					class="w-full sm:w-auto bg-custom-gray text-black font-light py-2 px-4 rounded-md hover:bg-gray-300 transition duration-300">
+					Reestablecer formulario
+				</button>
+			</div>
+		</form>
+	</div>
+</div>

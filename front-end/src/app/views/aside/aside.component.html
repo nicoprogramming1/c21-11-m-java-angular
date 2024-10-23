@@ -1,0 +1,32 @@
+<div class="flex h-full bg-gray-100 ">
+    <!-- Sidebar fijo -->
+    <aside class="bg-white text-black w-72 space-y-6 py-7 px-2 h-auto border-r border-y-gray-950">
+        <nav>
+            
+            <ul class="space-y-2">
+                <li>
+                    <a routerLink ="List"  class=" py-2.5 px-4 rounded transition duration-200 hover:bg-slate-300 flex"  >
+                     <img src="IcoGuardar.png" alt="Guardar" class="h-5 mx-5">   <p class="font-Inter font-semibold">Lista de usuarios</p>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="post"  class=" py-2.5 px-4 rounded transition duration-200 hover:bg-slate-300 flex">
+                       <img src="IcoGuardarB.png" alt="Registrar" class="h-5 mx-5"> Registrar usuario
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <div class="flex-1 p-10 bg-white">
+        <main class=" max-w-full">
+
+           <router-outlet></router-outlet>
+            
+          
+          
+            
+        </main>
+    </div>
+</div>

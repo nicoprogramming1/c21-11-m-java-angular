@@ -1,0 +1,23 @@
+<!-- save-observation.component.html -->
+<div class="fixed inset-0 z-50 flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full">
+      <h2 class="text-xl font-semibold mb-4">Registrar Observación</h2>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="mb-4">
+          <label for="student" class="block text-gray-700">Alumno:</label>
+          <select id="student" formControlName="student" class="w-full p-2 border border-gray-300 rounded">
+            <option *ngFor="let student of students$ | async" [value]="student.id">{{ student.firstName }} {{ student.lastName }} - {{ student.dni }}</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label for="comment" class="block text-gray-700">Comentario:</label>
+          <textarea id="comment" formControlName="comment" class="w-full p-2 border border-gray-300 rounded"></textarea>
+        </div>
+        <div class="flex justify-end">
+          <button type="button" class="mr-2 px-4 py-2 bg-gray-500 text-white rounded" (click)="closeModal()">Cancelar</button>
+          <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
