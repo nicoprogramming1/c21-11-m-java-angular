@@ -18,16 +18,16 @@ export class UserComponent implements OnInit {
 
   userForm: FormGroup;
   user!: User | null; 
-  isEditable: boolean = false;
-  showModal: boolean = false;
+  isEditable: boolean = false; // Estado de edición
+  showModal: boolean = false;  // Para mostrar el modal de confirmación
 
   // Inyección de servicios
   private userService = inject(UserService);
   private route = inject(ActivatedRoute);
-  private fb = inject(FormBuilder); 
+  private fb = inject(FormBuilder);
 
   constructor() {
-
+    // Inicializar el formulario con los campos deshabilitados
     this.userForm = this.fb.group({
       email: [{ value: '', disabled: true }, [Validators.required, Validators.email]],
       firstName: [{ value: '', disabled: true }, Validators.required],
@@ -36,10 +36,10 @@ export class UserComponent implements OnInit {
       dni: [{ value: '', disabled: true }, Validators.required],
       address: this.fb.group({
         address: [{ value: '', disabled: true }],
-        locality: [{ value: '', disabled: true }]
+        locality: [{ value: '', disabled: true }],
       }),
       phone: this.fb.group({
-        phone: [{ value: '', disabled: true }, Validators.required]
+        phone: [{ value: '', disabled: true }, Validators.required],
       }),
       role: [{ value: '', disabled: true }, Validators.required],
       legajo: [{ value: '', disabled: true }],
@@ -49,97 +49,62 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-        const userId = params.get('id');
-        if (userId) {
-            const userIdNumber = Number(userId); 
-            this.userService.getUserById(userIdNumber).subscribe({
-                next: (user: User | null) => { 
-                    if (user) {
-                        this.user = user; 
-                        this.userForm.patchValue({
-                            correo: this.user.email.email,
-                            firstname: this.user.firstName,
-                            lastname: this.user.lastName,
-                            birth: this.user.birthDay,
-                            dni: this.user.dni.dni,
-                            rol: this.user.role,
-                            legajo: this.user.legajo ? this.user.legajo.legajo : '',
-                            domicilio: this.user.address ? this.user.address.address : '',
-                            localidad: this.user.address ? this.user.address.locality.locality : '',
-                            telefono: this.user.phone ? this.user.phone.phone : '',
-                        });
-                    } else {
-                        console.error('Usuario no encontrado.');
-                    }
-                },
-                error: (err) => {
-                    console.error('Error al obtener el usuario:', err);
-                }
-            });
-        } else {
-            console.error('No se ha proporcionado un ID de usuario válido.');
-        }
+      const userId = params.get('id');
+      if (userId) {
+        const userIdNumber = Number(userId); 
+        this.userService.getUserById(userIdNumber).subscribe({
+          next: (user: User | null) => { 
+            if (user) {
+              this.user = user; 
+              this.userForm.patchValue({
+                email: this.user.email.email,
+                firstName: this.user.firstName,
+                lastName: this.user.lastName,
+                birthDay: this.user.birthDay,
+                dni: this.user.dni.dni,
+                role: this.user.role,
+                legajo: this.user.legajo?.legajo || '',
+                address: this.user.address?.address || '',
+                locality: this.user.address?.locality?.locality || '',
+                phone: this.user.phone?.phone || '',
+              });
+            } else {
+              console.error('Usuario no encontrado.');
+            }
+          },
+          error: (err) => {
+            console.error('Error al obtener el usuario:', err);
+          }
+        });
+      } else {
+        console.error('No se ha proporcionado un ID de usuario válido.');
+      }
     });
-}
-
-
-  getCorreo() {
-    return this.userForm.get('correo');
   }
 
-  getFirstname() {
-    return this.userForm.get('firstname');
+  
+  toggleEditMode() {
+    this.isEditable = !this.isEditable;
+
+    if (this.isEditable) {
+      this.userForm.enable();  
+    } else {
+      this.userForm.disable();
+    }
   }
 
-  getLastname() {
-    return this.userForm.get('lastname');
-  }
-
-  getBirth() {
-    return this.userForm.get('birth');
-  }
-
-  getDni() {
-    return this.userForm.get('dni');
-  }
-
-  getRol() {
-    return this.userForm.get('rol');
-  }
-
-  getLegajo() {
-    return this.userForm.get('legajo');
-  }
-
-  getDomicilio() {
-    return this.userForm.get('domicilio');
-  }
-
-  getLocalidad() {
-    return this.userForm.get('localidad');
-  }
-
-  getTelefono() {
-    return this.userForm.get('telefono');
-  }
-
-  getUserId(): number {
-    return this.user && this.user.id ? Number(this.user.id) : 0; 
-}
-
+  
   confirmarModificacion() {
     this.userForm.markAllAsTouched();
-  
     const userId = this.getUserId(); 
-    const updatedUserData: User = this.userForm.value; 
-  
+    const updatedUserData = this.userForm.getRawValue();  
+
     if (this.userForm.valid && userId != null) {
       this.userService.updateUser(userId.toString(), updatedUserData).subscribe({
         next: (data: User | null) => { 
           if (data) { 
             console.log('Usuario modificado con éxito:', data);
-            this.cerrarModal();
-            this.toggleEditMode();
+            this.toggleEditMode(); 
             this.userUpdated.emit({ userId: userId, updatedUserData });
           } else {
             console.error('No se pudo modificar el usuario: El usuario es nulo');
@@ -148,9 +113,6 @@ export class UserComponent implements OnInit {
         error: (error: any) => {
           console.error('Ha ocurrido un error durante la actualización', error);
         },
-        complete: () => {
-          console.log('Modificación completada');
-        }
       });
     } else {
       console.error('Formulario inválido o no se ha proporcionado un ID de usuario', {
@@ -159,30 +121,12 @@ export class UserComponent implements OnInit {
       });
     }
   }
-
-
-  onUserUpdated(event: { userId: number; updatedUserData: any }) {
-    console.log('Usuario actualizado:', event.userId, event.updatedUserData);
-  }
-
   onUserDeleted() {
     console.log("Usuario eliminado con éxito (Hacer modal)");
   }
-
-  toggleEditMode() {
-    this.isEditable = !this.isEditable;
-
-    if (this.isEditable) {
-      this.userForm.enable();
-    } else {
-      this.userForm.disable();
-    }
-  }
-
   abrirConfirmacion() {
     this.showModal = true;
   }
-
   cerrarModal() {
     this.showModal = false;
     this.toggleEditMode();
@@ -201,5 +145,9 @@ export class UserComponent implements OnInit {
         console.error('Error al recuperar el usuario:', error); 
       });
     }
+  }
+
+  getUserId(): number {
+  return this.user && this.user.id ? Number(this.user.id) : 0; 
   }
 }

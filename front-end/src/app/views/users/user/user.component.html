@@ -20,7 +20,7 @@
                 [ngClass]="{
                     'shadow-gray-400': !isEditable,
                     'shadow-custom-green': isEditable,
-                    'shadow-custom-pink': getCorreo()?.invalid && getCorreo()?.touched
+                    'shadow-custom-pink': userForm.get('correo')?.invalid && userForm.get('correo')?.touched
                 }"
                 class="border border-gray-300 w-full h-[61px] p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
             />
@@ -36,12 +36,12 @@
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
                         'shadow-custom-green': isEditable,
-                        'shadow-custom-pink': getFirstname()?.invalid && getFirstname()?.touched
+                        'shadow-custom-pink': userForm.get('firstname')?.invalid && userForm.get('firstname')?.touched
                     }"
                     class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
-    
+        
             <div class="mb-4 flex flex-col">
                 <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Apellido/s*</label>
                 <input 
@@ -51,12 +51,12 @@
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
                         'shadow-custom-green': isEditable,
-                        'shadow-custom-pink': getLastname()?.invalid && getLastname()?.touched
+                        'shadow-custom-pink': userForm.get('lastname')?.invalid && userForm.get('lastname')?.touched
                     }"
                     class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
-    
+        
             <div class="mb-4 flex flex-col">
                 <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Fecha de nacimiento*</label>
                 <input 
@@ -65,12 +65,12 @@
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
                         'shadow-custom-green': isEditable,
-                        'shadow-custom-pink': getBirth()?.invalid && getBirth()?.touched
+                        'shadow-custom-pink': userForm.get('birth')?.invalid && userForm.get('birth')?.touched
                     }"
                     class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
-    
+        
             <div class="mb-4 flex flex-col">
                 <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">DNI*</label>
                 <input 
@@ -80,12 +80,12 @@
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
                         'shadow-custom-green': isEditable,
-                        'shadow-custom-pink': getDni()?.invalid && getDni()?.touched
+                        'shadow-custom-pink': userForm.get('dni')?.invalid && userForm.get('dni')?.touched
                     }"
                     class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
-    
+        
             <div class="mb-4 flex flex-col">
                 <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Rol*</label>
                 <input 
@@ -95,12 +95,12 @@
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
                         'shadow-custom-green': isEditable,
-                        'shadow-custom-pink': getRol()?.invalid && getRol()?.touched
+                        'shadow-custom-pink': userForm.get('rol')?.invalid && userForm.get('rol')?.touched
                     }"
                     class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
-    
+        
             <div class="mb-4 flex flex-col">
                 <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Legajo (Sólo profesores)</label>
                 <input 
@@ -110,12 +110,12 @@
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
                         'shadow-custom-green': isEditable,
-                        'shadow-custom-pink': getLegajo()?.invalid && getLegajo()?.touched
+                        'shadow-custom-pink': userForm.get('legajo')?.invalid && userForm.get('legajo')?.touched
                     }"
                     class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
-    
+        
             <div class="mb-4 flex flex-col">
                 <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Domicilio</label>
                 <input 
@@ -125,12 +125,12 @@
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
                         'shadow-custom-green': isEditable,
-                        'shadow-custom-pink': getDomicilio()?.invalid && getDomicilio()?.touched
+                        'shadow-custom-pink': userForm.get('domicilio')?.invalid && userForm.get('domicilio')?.touched
                     }"
                     class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
-    
+        
             <div class="mb-4 flex flex-col">
                 <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Localidad</label>
                 <input 
@@ -140,12 +140,12 @@
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
                         'shadow-custom-green': isEditable,
-                        'shadow-custom-pink': getLocalidad()?.invalid && getLocalidad()?.touched
+                        'shadow-custom-pink': userForm.get('localidad')?.invalid && userForm.get('localidad')?.touched
                     }"
                     class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
-    
+        
             <div class="mb-4 flex flex-col">
                 <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Teléfono*</label>
                 <input 
@@ -155,12 +155,12 @@
                     [ngClass]="{
                         'shadow-gray-400': !isEditable,
                         'shadow-custom-green': isEditable,
-                        'shadow-custom-pink': getTelefono()?.invalid && getTelefono()?.touched
+                        'shadow-custom-pink': userForm.get('telefono')?.invalid && userForm.get('telefono')?.touched
                     }"
                     class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
-        </div>
+        </div>        
     </form>
 </div>
 
@@ -187,7 +187,7 @@
     <!-- Modal de confirmación de guardar cambios -->
     <div
         *ngIf="showModal"
-        class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+        class="fixed inset-0 flex justify-center items-center"
     >
         <div
             class="bg-white w-[415px] h-[225px] p-6 border border-gray-700 rounded-lg shadow-lg flex flex-col justify-around"
