@@ -87,6 +87,15 @@ export const routes: Routes = [
       ),
   },
   {
+    // Ruta para acceder A UNA SOLA asignatura, si va a haber un listados hay que modificar /subjects/subject/subject.component
+    path: 'subject/:id',
+    title: 'Subject interface',
+    loadComponent: () =>
+      import('./views/subjects/subject/subject.component').then(
+        (m) => m.SubjectComponent
+      ),
+  },
+  {
     path: 'enrollStudent/:id',
     title: 'Inscribir alumno en curso',
     loadComponent: () =>
