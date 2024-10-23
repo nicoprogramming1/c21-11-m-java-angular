@@ -4,11 +4,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../../interfaces/user.interface';
 import { UserService } from '../../../services/user.service';
+import { DeleteComponent } from '../delete/delete.component';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, DeleteComponent],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
@@ -122,9 +123,9 @@ export class UserComponent implements OnInit {
     return this.userForm.get('telefono');
   }
 
-  getUserId(): number | null {
-    return this.user && this.user.id ? Number(this.user.id) : null; 
-  }
+  getUserId(): number {
+    return this.user && this.user.id ? Number(this.user.id) : 0; 
+}
 
   confirmarModificacion() {
     this.userForm.markAllAsTouched();
