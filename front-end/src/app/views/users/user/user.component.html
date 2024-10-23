@@ -22,7 +22,7 @@
                     'shadow-custom-green': isEditable,
                     'shadow-custom-pink': getCorreo()?.invalid && getCorreo()?.touched
                 }"
-                class="border border-gray-300 w-full h-[61px] p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none shadow-md"
+                class="border border-gray-300 w-full h-[61px] p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
             />
         </div>
     
@@ -38,7 +38,7 @@
                         'shadow-custom-green': isEditable,
                         'shadow-custom-pink': getFirstname()?.invalid && getFirstname()?.touched
                     }"
-                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                    class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
     
@@ -53,7 +53,7 @@
                         'shadow-custom-green': isEditable,
                         'shadow-custom-pink': getLastname()?.invalid && getLastname()?.touched
                     }"
-                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                    class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
     
@@ -67,7 +67,7 @@
                         'shadow-custom-green': isEditable,
                         'shadow-custom-pink': getBirth()?.invalid && getBirth()?.touched
                     }"
-                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                    class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
     
@@ -82,7 +82,7 @@
                         'shadow-custom-green': isEditable,
                         'shadow-custom-pink': getDni()?.invalid && getDni()?.touched
                     }"
-                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                    class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
     
@@ -97,12 +97,12 @@
                         'shadow-custom-green': isEditable,
                         'shadow-custom-pink': getRol()?.invalid && getRol()?.touched
                     }"
-                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                    class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
     
             <div class="mb-4 flex flex-col">
-                <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Legajo(Sólo profesores)</label>
+                <label class="font-inter text-[24px] font-normal leading-[29.05px] text-left opacity-50">Legajo (Sólo profesores)</label>
                 <input 
                     type="text" 
                     formControlName="legajo" 
@@ -112,7 +112,7 @@
                         'shadow-custom-green': isEditable,
                         'shadow-custom-pink': getLegajo()?.invalid && getLegajo()?.touched
                     }"
-                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                    class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
     
@@ -127,7 +127,7 @@
                         'shadow-custom-green': isEditable,
                         'shadow-custom-pink': getDomicilio()?.invalid && getDomicilio()?.touched
                     }"
-                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                    class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
     
@@ -142,7 +142,7 @@
                         'shadow-custom-green': isEditable,
                         'shadow-custom-pink': getLocalidad()?.invalid && getLocalidad()?.touched
                     }"
-                    class="w-full h-[61px] border border-gray-300  p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
+                    class="w-full h-[61px] border border-gray-300 p-4 text-[24px] leading-[29.05px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-md"
                 />
             </div>
     
@@ -163,57 +163,19 @@
         </div>
     </form>
     
-    
     <!-- Sección botones fuera del formulario -->
     <div class="flex flex-col md:flex-row justify-end space-y-4 md:space-y-0 md:space-x-4 mt-4 w-full max-w-[851px] mx-auto">
-        <app-delete *ngIf="user?.id" [id]="getUserId()" (eliminar)="onUserDeleted()"></app-delete>
-    
-        <!-- Botón para activar el modo de edición -->
         <button 
-            *ngIf="!isEditable" 
-            class="bg-custom-green text-custom-black font-normal w-[223px] h-[49px] rounded-[12px] md:w-[223px] md:h-[49px] transition duration-300 ease-in-out transform hover:scale-105"
-            (click)="toggleEditMode()">
-            Modificar Usuario
+            type="button" 
+            (click)="confirmarModificacion()"
+            class="bg-custom-green text-white font-inter text-[24px] leading-[29.05px] h-[56px] rounded-md shadow-md hover:bg-green-700 transition-colors duration-300 w-full md:w-[170px]">
+            Guardar
         </button>
-    
-        <!-- Botón para guardar cambios que se muestra cuando está en modo de edición -->
-        <button
-            *ngIf="isEditable"
-            class="bg-custom-green hover:bg-custom-green-dark text-black font-normal w-full h-[49px] rounded-[12px] transition duration-300 ease-in-out transform hover:scale-105"
-            (click)="abrirConfirmacion()">
-            Guardar Cambios
+        <button 
+            type="button" 
+            (click)="cerrarModal()"
+            class="bg-custom-pink text-white font-inter text-[24px] leading-[29.05px] h-[56px] rounded-md shadow-md hover:bg-pink-700 transition-colors duration-300 w-full md:w-[170px]">
+            Cancelar
         </button>
-    
-        <!-- Modal de confirmación de guardar cambios -->
-        <div
-            *ngIf="showModal"
-            class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-        >
-            <div
-                class="bg-white w-[415px] h-[225px] p-6 border border-gray-700 rounded-lg shadow-lg flex flex-col justify-around"
-            >
-                <h2
-                    class="font-inter text-custom-black text-[24px] font-light leading-[29.05px] text-center w-[274px] h-[58px] mx-auto opacity-100"
-                >
-                    ¿Está seguro de guardar los cambios?
-                </h2>
-    
-                <div class="flex justify-center space-x-4">
-                    <button
-                        class="bg-custom-pink hover:bg-pink-700 text-black font-normal py-2 px-4 rounded-lg w-32"
-                        (click)="cerrarModal()"
-                    >
-                        Cancelar
-                    </button>
-                    <button
-                        class="bg-custom-green hover:bg-custom-green-dark text-black font-normal py-2 px-4 rounded-lg w-32"
-                        (click)="confirmarModificacion()"
-                    >
-                        Sí, guardar
-                    </button>
-                </div>
-            </div>
-        </div>
     </div>
-    
 </div>
