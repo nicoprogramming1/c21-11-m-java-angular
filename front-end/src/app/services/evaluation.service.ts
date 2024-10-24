@@ -1,10 +1,10 @@
-import { inject, Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Evaluation, Observation } from '../interfaces/evaluation.interface';
+import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
-import { EvaluationResponse, ObservationResponse, QualificationResponse } from '../interfaces/responses.interface';
+import { environment } from '../../environments/environment';
+import { Evaluation, Observation } from '../interfaces/evaluation.interface';
 import { Qualification } from '../interfaces/qualification.interface';
+import { EvaluationResponse, ObservationResponse, QualificationResponse } from '../interfaces/responses.interface';
 
 @Injectable({
   providedIn: 'root'

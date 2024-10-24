@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { catchError, map, Observable, of } from 'rxjs';
+import { environment } from '../../environments/environment';
 import { UserResponse, UsersResponse } from '../interfaces/responses.interface';
 import { Role, User } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root',
 })
+
+
 export class UserService {
   private apiUrl = environment.apiUrl;
   private http = inject(HttpClient);
@@ -95,4 +97,23 @@ export class UserService {
       })
     );
   }
+
+  updateUser(id: string, updatedUserData: User): Observable<User | null> {
+    return this.http.put<UserResponse>(`${this.apiUrl}/user/${id}`, updatedUserData).pipe(
+      map((res) => {
+        if (res.success) {
+          return res.data; 
+        } else {
+          throw new Error(res.message);  
+        }
+      }),
+      catchError((err) => {
+        console.error('Error al actualizar el usuario:', err);
+        return of(null);  
+      })
+    );
+  }
 }
+
+
+ 
