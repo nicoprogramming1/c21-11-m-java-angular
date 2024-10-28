@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { catchError, map, Observable, of } from 'rxjs';
+import { environment } from '../../environments/environment';
 import { UserResponse, UsersResponse } from '../interfaces/responses.interface';
 import { Role, User } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root',
 })
+
+
 export class UserService {
   private apiUrl = environment.apiUrl;
   private http = inject(HttpClient);
@@ -112,3 +114,6 @@ export class UserService {
     );
   }
 }
+
+
+ 
