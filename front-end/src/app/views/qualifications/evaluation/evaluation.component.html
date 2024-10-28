@@ -1,0 +1,145 @@
+<div class="max-w-[50vw] mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">
+        {{ title }}
+    </h1>
+
+    <form [formGroup]="evaluationForm" class="w-full max-w-[800px] mx-auto">
+        <div class="mb-3 flex flex-col">
+            <label for="subject" class="block text-left font-inter font-normal text-[16px] leading-[24px] mb-1 opacity-50">Materia:</label>
+            <input 
+                id="subject" 
+                formControlName="subject" 
+                placeholder="Ingrese la materia" 
+                [ngClass]="{
+                    'shadow-gray-400': !isEditable,
+                    'shadow-custom-green': isEditable,
+                    'shadow-custom-pink': evaluationForm.get('subject')?.invalid && evaluationForm.get('subject')?.touched
+                }"
+                class="border border-gray-300 w-full h-[35px] p-2 text-[16px] leading-[24px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            />
+        </div>
+    
+        <div class="mb-3 flex flex-col">
+            <label for="topics" class="block text-left font-inter font-normal text-[16px] leading-[24px] mb-1 opacity-50">Temas:</label>
+            <input 
+                id="topics" 
+                formControlName="topics" 
+                placeholder="Ingrese los temas" 
+                [ngClass]="{
+                    'shadow-gray-400': !isEditable,
+                    'shadow-custom-green': isEditable,
+                    'shadow-custom-pink': evaluationForm.get('topics')?.invalid && evaluationForm.get('topics')?.touched
+                }"
+                class="border border-gray-300 w-full h-[35px] p-2 text-[16px] leading-[24px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            />
+        </div>
+    
+        <div class="mb-3 flex flex-col">
+            <label for="evaluationDate" class="block text-left font-inter font-normal text-[16px] leading-[24px] mb-1 opacity-50">Fecha de Evaluación:</label>
+            <input 
+                id="evaluationDate" 
+                formControlName="evaluationDate" 
+                type="date"
+                [ngClass]="{
+                    'shadow-gray-400': !isEditable,
+                    'shadow-custom-green': isEditable,
+                    'shadow-custom-pink': evaluationForm.get('evaluationDate')?.invalid && evaluationForm.get('evaluationDate')?.touched
+                }"
+                class="border border-gray-300 w-full h-[35px] p-2 text-[16px] leading-[24px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            />
+        </div>
+    
+        <div class="mb-3 flex flex-col">
+            <label for="califications" class="block text-left font-inter font-normal text-[16px] leading-[24px] mb-1 opacity-50">Calificaciones:</label>
+            <input 
+                id="califications" 
+                formControlName="califications" 
+                placeholder="Ingrese las calificaciones" 
+                [ngClass]="{
+                    'shadow-gray-400': !isEditable,
+                    'shadow-custom-green': isEditable,
+                    'shadow-custom-pink': evaluationForm.get('califications')?.invalid && evaluationForm.get('califications')?.touched
+                }"
+                class="border border-gray-300 w-full h-[35px] p-2 text-[16px] leading-[24px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            />
+        </div>
+    
+        <div class="mb-3 flex flex-col">
+            <label for="comments" class="block text-left font-inter font-normal text-[16px] leading-[24px] mb-1 opacity-50">Comentarios:</label>
+            <textarea 
+                id="comments" 
+                formControlName="comments" 
+                placeholder="Ingrese comentarios" 
+                [ngClass]="{
+                    'shadow-gray-400': !isEditable,
+                    'shadow-custom-green': isEditable,
+                    'shadow-custom-pink': evaluationForm.get('comments')?.invalid && evaluationForm.get('comments')?.touched
+                }"
+                class="border border-gray-300 w-full h-[80px] p-2 text-[16px] leading-[24px] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            ></textarea>
+        </div>
+    </form>
+
+    <div class="flex flex-col md:flex-row justify-end space-y-4 md:space-y-0 md:space-x-4 mt-4 w-full max-w-[800px] mx-auto">
+        <!-- BOTON ELIMINAR  -->
+        <button class="bg-red-500 text-custom-black font-normal w-[180px] h-[40px] rounded-[8px] md:w-[180px] md:h-[40px] transition duration-300 ease-in-out transform hover:scale-105" (click)="abrirConfirmacion()">
+            Eliminar Evaluación
+        </button>
+          
+        <!-- Modal para confirmar eliminación -->
+        <div *ngIf="showDeleteModal" class="fixed inset-0 flex items-center justify-center z-50">
+            <div class="bg-white rounded-lg shadow-lg p-4">
+                <h2 class="text-lg font-semibold">Confirmación</h2>
+                <p>¿Estás seguro de que deseas eliminar este usuario?</p>
+                <div class="mt-4">
+                    <button class="bg-red-500 text-white py-2 px-4 rounded" (click)="confirmarEliminacion()">
+                        Sí, eliminar
+                    </button>
+                    <button class="bg-gray-300 text-gray-700 py-2 px-4 rounded" (click)="cerrarModal()">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+          
+        <!-- Botón para activar el modo de edición -->
+        <button 
+            *ngIf="!isEditable" 
+            class="bg-custom-green text-custom-black font-normal w-[180px] h-[40px] rounded-[8px] md:w-[180px] md:h-[40px] transition duration-300 ease-in-out transform hover:scale-105"
+            (click)="toggleEditMode()">
+            Modificar
+        </button>
+
+        <!-- Botón para guardar cambios que se muestra cuando está en modo de edición -->
+        <button
+            *ngIf="isEditable"
+            class="bg-custom-green hover:bg-custom-green-dark text-black font-normal w-full h-[40px] rounded-[8px] transition duration-300 ease-in-out transform hover:scale-105"
+            (click)="abrirConfirmacion()">
+            Guardar Cambios
+        </button>
+
+        <!-- Modal de confirmación de guardar cambios -->
+        <div *ngIf="showModal" class="fixed inset-0 flex justify-center items-center">
+            <div class="bg-white w-[360px] h-[200px] p-6 border border-gray-700 rounded-lg shadow-lg flex flex-col justify-around">
+                <h2 class="font-inter text-custom-black text-[20px] font-light leading-[24px] text-center mx-auto opacity-100">
+                    ¿Está seguro de guardar los cambios?
+                </h2>
+
+                <div class="flex justify-center space-x-4">
+                    <button
+                        class="bg-custom-pink hover:bg-pink-700 text-black font-normal py-2 px-4 rounded-lg w-28"
+                        (click)="cancelChanges()"
+                    >
+                        Cancelar
+                    </button>
+                    <button
+                        class="bg-custom-green hover:bg-custom-green-dark text-black font-normal py-2 px-4 rounded-lg w-28"
+                        (click)="confirmChanges()"
+                    >
+                        Sí, guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,10 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Subject, WeekDays } from '../../../interfaces/subject.interface';
+import { Role } from '../../../interfaces/user.interface';
 import { SubjectService } from '../../../services/subject.service';
 import { UserService } from '../../../services/user.service';
-import { Role } from '../../../interfaces/user.interface';
-import { CommonModule } from '@angular/common';
-import { Subject, WeekDays } from '../../../interfaces/subject.interface';
 
 @Component({
   selector: 'app-save-subject',
@@ -21,6 +21,8 @@ export class SaveSubjectComponent {
   registerForm!: FormGroup;
   days = Object.values(WeekDays);
   selectedDays: string[] = []
+
+  private subjectId?: string; 
 
   // Observable para los profesores
   teachers$ = this.userService.getUsersByRole(Role.PROFESOR);
@@ -55,6 +57,7 @@ export class SaveSubjectComponent {
   onSubmit(): void {
     if (this.registerForm.valid) {
       const subject: Subject = {
+        id: this.subjectId || '',
         name: this.registerForm.value.name,
         topics: this.registerForm.value.topics,
         description: this.registerForm.value.description,

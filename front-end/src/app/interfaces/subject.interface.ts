@@ -2,7 +2,7 @@ import { Evaluation } from "./evaluation.interface";
 import { User } from "./user.interface";
 
 export interface Subject {
-  id?: string,
+  id: string,
   name: string;
   topics?: string;
   description?: string;

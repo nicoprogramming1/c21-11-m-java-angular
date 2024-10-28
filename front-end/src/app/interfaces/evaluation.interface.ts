@@ -3,6 +3,7 @@ import { Subject } from "./subject.interface";
 import { User } from "./user.interface";
 
 export interface Evaluation {
+    id: number;
     subject: Subject["id"],
     evaluationDate: Date,
     topics: string,

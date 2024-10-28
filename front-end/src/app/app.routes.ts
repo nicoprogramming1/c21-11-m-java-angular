@@ -3,53 +3,66 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'dashboard',
+    loadComponent: () =>
+      import('./views/dashboard/dashboard.component').then(
+        (m) => m.DashboardComponent
+      ),
+    children: [
+      {
+        path: 'List',
+        title: 'Post user interface',
         loadComponent: () =>
-          import('./views/dashboard/dashboard.component').then(
-            (m) => m.DashboardComponent
+          import('./views/list-user/list-user.component').then(
+            (m) => m.ListUserComponent
           ),
-        children: [
-          {
-
-
-            path: 'List',
-            title: 'Post user interface',
-            loadComponent: () =>
-              import('./views/list-user/list-user.component').then(
-                (m) => m.ListUserComponent
-              ),
-          },
-          {
-            path: 'user/:id',
-            title: 'Get user interface',
-            loadComponent: () =>
-              import('./views/users/user/user.component').then(
-                (m) => m.UserComponent
-              ),
-          },
-          {
-            path: 'delete/:id',
-            title: 'Delete user interface',
-            loadComponent: () =>
-              import('./views/users/delete/delete.component').then(
-                (m) => m.DeleteComponent
-              ),
-          },
-          {
-            path: 'post',
-            title: 'Post user interface',
-            loadComponent: () =>
-              import('./views/users/save-user/save-user.component').then(
-                (m) => m.SaveUserComponent
-              ),
-          },
-          {
-            path: '',
-            redirectTo: 'dashboard',
-            pathMatch: 'full',
-          },
-        ],
-
+      },
+      {
+        path: 'user/:id',
+        title: 'Get user interface',
+        loadComponent: () =>
+          import('./views/users/user/user.component').then(
+            (m) => m.UserComponent
+          ),
+      },
+      {
+        path: 'delete/:id',
+        title: 'Delete user interface',
+        loadComponent: () =>
+          import('./views/users/delete/delete.component').then(
+            (m) => m.DeleteComponent
+          ),
+      },
+      {
+        path: 'post',
+        title: 'Post user interface',
+        loadComponent: () =>
+          import('./views/users/save-user/save-user.component').then(
+            (m) => m.SaveUserComponent
+          ),
+      },
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+    ],
   },
+  {
+    path: 'dashboard-teacher',
+    title: 'Teacher Dashboard',
+    loadComponent: () =>
+      import('./views/dashboard-teacher/dashboard-teacher.component').then(
+        (m) => m.DashboardTeacherComponent
+      ),
+  },
+  {
+    path: 'evaluation/:id', 
+    title: 'Evaluations interface',
+    loadComponent: () =>
+        import('./views/qualifications/evaluation/evaluation.component').then(
+            (m) => m.EvaluationComponent
+        ),
+},
   {
     path: 'user/:id',
     title: 'Get user interface',
@@ -87,7 +100,6 @@ export const routes: Routes = [
       ),
   },
   {
-    // Ruta para acceder A UNA SOLA asignatura, si va a haber un listados hay que modificar /subjects/subject/subject.component
     path: 'subject/:id',
     title: 'Subject interface',
     loadComponent: () =>
@@ -112,7 +124,6 @@ export const routes: Routes = [
       ),
   },
   {
-    // debe crear una evaluacion en la asignatura en la que esta gestionando (/:subjectId)
     path: 'postEvaluation/:subjectId',
     title: 'Post evaluation interface',
     loadComponent: () =>
@@ -121,7 +132,6 @@ export const routes: Routes = [
       ).then((m) => m.SaveEvaluationComponent),
   },
   {
-    // debe crear una evaluacion en la asignatura en la que esta gestionando (/:subjectId)
     path: 'postObservation',
     title: 'Post observation interface',
     loadComponent: () =>
@@ -130,7 +140,6 @@ export const routes: Routes = [
       ).then((m) => m.SaveObservationComponent),
   },
   {
-    // debe crear una evaluacion en la asignatura en la que esta gestionando (/:subjectId)
     path: 'evaluateStudent',
     title: 'Evaluate student interface',
     loadComponent: () =>

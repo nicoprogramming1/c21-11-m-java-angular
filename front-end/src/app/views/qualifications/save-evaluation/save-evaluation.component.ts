@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { EvaluationService } from '../../../services/evaluation.service';
-import { environment } from '../../../../environments/environment';
-import { Evaluation } from '../../../interfaces/evaluation.interface';
 import { ActivatedRoute } from '@angular/router';
-import { SubjectService } from '../../../services/subject.service';
+import { Evaluation } from '../../../interfaces/evaluation.interface';
 import { Subject } from '../../../interfaces/subject.interface';
+import { EvaluationService } from '../../../services/evaluation.service';
+import { SubjectService } from '../../../services/subject.service';
 
 @Component({
   selector: 'app-save-evaluation',
@@ -48,12 +47,18 @@ export class SaveEvaluationComponent {
 
   onSubmit(): void {
     if (this.registerForm.valid) {
+      if (!this.subjectId) {//TUVE Q AGREGAR ESTE IF PQ SINO ME TIRABA ERROR AL NO TENER BACK
+        console.error('No se puede registrar la evaluación sin un subjectId.');
+        return; 
+      }
       const evaluation: Evaluation = {
-        subject: this.subjectId,
+        id: this.generateId(),//ESTA GENERANDO UN ID PQ NO SABIA COMO LO VAN A TRABAJR DESDE EL BACK
+        subject: this.subjectId, 
         evaluationDate: this.registerForm.value.evaluationDate,
         topics: this.registerForm.value.topics,
         comments: this.registerForm.value.comments,
       };
+
 
       console.log("Onsubmit id subject", evaluation.subject)
 
@@ -70,6 +75,10 @@ export class SaveEvaluationComponent {
       });
     }
   }
+
+  private generateId(): number {//NO CREO QUE LO USEN, ASI Q ME LO DIO FULL CHATGPT
+    return Math.floor(Math.random() * 1000); // Genera un ID aleatorio entre 0 y 999
+}
 
   resetForm(): void {
     this.registerForm.reset();

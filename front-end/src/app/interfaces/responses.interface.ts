@@ -35,9 +35,9 @@ export interface CourseResponse {
 }
 
 export interface EvaluationResponse {
-    success: boolean,
-    message: string,
-    data: Evaluation
+    success: boolean;
+    data: Evaluation[];
+    message?: string;
 }
 
 export interface ObservationResponse {

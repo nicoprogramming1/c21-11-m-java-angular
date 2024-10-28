@@ -1,5 +1,5 @@
 export const environment = {
-    production: false,
-    apiUrl: 'http://localhost:3000' // api contra la que prueben los endpoints
-  };
+  production: false,
+  apiUrl: 'http://144.33.15.219:8080/'
+};
   

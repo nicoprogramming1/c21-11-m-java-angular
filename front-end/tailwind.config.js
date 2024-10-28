@@ -15,7 +15,6 @@ module.exports = {
         "custom-purple": "#9795B5",
         "custom-pink": "#FF9EB1",
         "custom-green": "#36D39A",
-        "custom-gray": "#C8CDCB",
         "custom-SlateGray":"#827F98"
        
       },
