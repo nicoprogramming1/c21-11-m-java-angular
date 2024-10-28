@@ -95,4 +95,20 @@ export class UserService {
       })
     );
   }
+
+  updateUser(id: string, updatedUserData: User): Observable<User | null> {
+    return this.http.put<UserResponse>(`${this.apiUrl}/user/${id}`, updatedUserData).pipe(
+      map((res) => {
+        if (res.success) {
+          return res.data; 
+        } else {
+          throw new Error(res.message);  
+        }
+      }),
+      catchError((err) => {
+        console.error('Error al actualizar el usuario:', err);
+        return of(null);  
+      })
+    );
+  }
 }
