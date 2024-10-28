@@ -28,7 +28,7 @@ export class SubjectService {
   }
 
   saveSubject(subject: Subject): Observable<Subject | null> {
-    return this.http.post<SubjectResponse>(`${this.apiUrl}/subjects`, subject).pipe(
+    return this.http.post<SubjectResponse>(`${this.apiUrl}/subject/create`, subject).pipe(
       map((res) => {
         if (res.success) {
           return res.data;
