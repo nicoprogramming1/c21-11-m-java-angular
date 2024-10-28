@@ -70,7 +70,8 @@ export class MainComponent implements OnInit {
   }
 
   registrarNuevaEvaluacion() {
-    const mockSubjectId = '123'; // ID fijo para probar
+    const mockSubjectId = '123'; // Acá puede haber un tema, Hay que modificar para que reciba el subject de la asgnatura
+    //que haya sido creada. 
     console.log(`Redirigiendo a postEvaluation/${mockSubjectId}`);
     this.router.navigate(['/postEvaluation', mockSubjectId]);
   }
@@ -79,9 +80,9 @@ export class MainComponent implements OnInit {
     this.router.navigate(['/evaluation', evaluationId]); 
   }
 
-  // Nuevo método para abrir el modal de evaluación
+  
   openEvaluateStudentModal(evaluationId: number): void {
-    this.selectedEvaluationId = evaluationId.toString(); // Convierte a string
-    this.abrirModal(); // Abre el modal
+    this.selectedEvaluationId = evaluationId.toString(); // Convierto a string x el tema de la interfaz
+    this.abrirModal(); 
   }
 }

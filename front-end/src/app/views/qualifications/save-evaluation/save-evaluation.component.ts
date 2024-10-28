@@ -76,7 +76,7 @@ export class SaveEvaluationComponent {
     }
   }
 
-  private generateId(): number {//NO CREO QUE LO USEN, ASI Q ME LO DIO FULL CHATGPT
+  private generateId(): number {//NO CREO QUE LO USEN, ASI Q ME LO DIO FULL CHATGPT, es para que funcione el id de evaluacion
     return Math.floor(Math.random() * 1000); // Genera un ID aleatorio entre 0 y 999
 }
 

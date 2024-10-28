@@ -14,16 +14,16 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./evaluate-student.component.css']
 })
 export class EvaluateStudentComponent {
-  @Input() evaluationId: string = '1'; // Propiedad de entrada
+  @Input() evaluationId: string = '1'; // le tengo que mandar un id de evaluacion sí o sí, porque los botones estan en el listado
 
   private fb = inject(FormBuilder);
   private evaluationService = inject(EvaluationService);
   private userService = inject(UserService);
 
   registerForm!: FormGroup;
-  modalVisible: boolean = false; // Controla la visibilidad del modal
+  modalVisible: boolean = false; 
   grades = Object.values(Grades);
-  students$ = this.userService.getUsersByRole(Role.ALUMNO); // Observable para los alumnos
+  students$ = this.userService.getUsersByRole(Role.ALUMNO); 
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
