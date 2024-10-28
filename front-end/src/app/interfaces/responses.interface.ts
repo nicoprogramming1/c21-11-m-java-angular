@@ -34,12 +34,19 @@ export interface CourseResponse {
     data: Course
 }
 
-export interface EvaluationResponse {
+
+export interface EvaluationsResponse {
     success: boolean;
     data: Evaluation[];
     message?: string;
 }
 
+//INTERFAZ NUEVA Q SERVIRIA PARA TRAER EVALUACION X ID
+export interface EvaluationResponse {
+    success: boolean;
+    data: Evaluation;
+    message?: string;
+}
 export interface ObservationResponse {
     success: boolean,
     message: string,

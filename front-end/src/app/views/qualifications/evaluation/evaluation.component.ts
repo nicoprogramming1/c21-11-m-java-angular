@@ -4,10 +4,11 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { EvaluationService } from '../../../services/evaluation.service';
 
+
 @Component({
   selector: 'app-evaluation',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ],
   templateUrl: './evaluation.component.html',
   styleUrls: ['./evaluation.component.css']
 })
@@ -26,11 +27,11 @@ export class EvaluationComponent implements OnInit {
 
   constructor() {
     this.evaluationForm = this.fb.group({
-      subject: [{ value: '', disabled: true }],        // Campo para la asignatura deshabilitado
-      topics: [{ value: '', disabled: true }],         // Campo para los temas deshabilitado
-      evaluationDate: [{ value: '', disabled: true }], // Campo para la fecha de evaluación deshabilitado
-      califications: [{ value: [], disabled: true }],  // Campo para las calificaciones deshabilitado
-      comments: [{ value: '', disabled: true }]         // Campo para los comentarios deshabilitado
+      subject: [{ value: '', disabled: true }],        
+      topics: [{ value: '', disabled: true }],         
+      evaluationDate: [{ value: '', disabled: true }], 
+      califications: [{ value: [], disabled: true }], 
+      comments: [{ value: '', disabled: true }] 
     });
   }
 

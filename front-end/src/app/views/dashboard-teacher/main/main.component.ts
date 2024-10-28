@@ -5,18 +5,20 @@ import { Evaluation } from '../../../interfaces/evaluation.interface';
 import { Subject } from '../../../interfaces/subject.interface';
 import { Role } from '../../../interfaces/user.interface';
 import { EvaluationService } from '../../../services/evaluation.service';
+import { EvaluateStudentComponent } from '../../qualifications/evaluate-student/evaluate-student.component';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, EvaluateStudentComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
 export class MainComponent implements OnInit {
-  mostrarModal: boolean = false;
+  mostrarModal: boolean = false; // Controla la visibilidad del modal
   evaluaciones: Evaluation[] = [];
   private evaluationService = inject(EvaluationService);
+  selectedEvaluationId: string = ''; 
 
   constructor(private router: Router) {}
 
@@ -75,5 +77,11 @@ export class MainComponent implements OnInit {
 
   navigateToEvaluation(evaluationId: number) {
     this.router.navigate(['/evaluation', evaluationId]); 
-}
+  }
+
+  // Nuevo método para abrir el modal de evaluación
+  openEvaluateStudentModal(evaluationId: number): void {
+    this.selectedEvaluationId = evaluationId.toString(); // Convierte a string
+    this.abrirModal(); // Abre el modal
+  }
 }
