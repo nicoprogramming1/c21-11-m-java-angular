@@ -1,28 +1,29 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Grades, Qualification } from '../../../interfaces/qualification.interface';
+import { Role } from '../../../interfaces/user.interface';
 import { EvaluationService } from '../../../services/evaluation.service';
 import { UserService } from '../../../services/user.service';
-import { Role } from '../../../interfaces/user.interface';
-import { Grades, Qualification } from '../../../interfaces/qualification.interface';
 
 @Component({
   selector: 'app-evaluate-student',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './evaluate-student.component.html',
-  styleUrl: './evaluate-student.component.css'
+  styleUrls: ['./evaluate-student.component.css']
 })
 export class EvaluateStudentComponent {
+  @Input() evaluationId: string = '1'; // le tengo que mandar un id de evaluacion sí o sí, porque los botones estan en el listado
+
   private fb = inject(FormBuilder);
   private evaluationService = inject(EvaluationService);
   private userService = inject(UserService);
 
   registerForm!: FormGroup;
-  modalVisible: boolean = false; // Variable para controlar la visibilidad de la modal
-  evaluationId: string = '1'; // Hardcodeado por ahora
+  modalVisible: boolean = false; 
   grades = Object.values(Grades);
-  students$ = this.userService.getUsersByRole(Role.ALUMNO); // Observable para los alumnos
+  students$ = this.userService.getUsersByRole(Role.ALUMNO); 
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -45,7 +46,7 @@ export class EvaluateStudentComponent {
       this.evaluationService.evaluateStudent(qualification, this.evaluationId).subscribe({
         next: (response) => {
           console.log('Calificación registrada exitosamente', response);
-          this.closeModal(); // Cerrar modal después del éxito
+          this.closeModal(); // Cierra el modal después del éxito
         },
         error: (error) => {
           console.error('Error al registrar calificación', error);
@@ -62,6 +63,6 @@ export class EvaluateStudentComponent {
   }
 
   closeModal(): void {
-    this.modalVisible = false; // Cierra la modal
+    this.modalVisible = false; // Cierra el modal
   }
 }
